@@ -1,0 +1,230 @@
+/* =========================================================
+   Ateliê Geane Cliz — style.css
+   Paleta: fundo #F8F1EB | bege #D9BBA9 | terracota #C36A08
+           vinho #8E3309 | médio #7D472B | café #3E1402
+   ========================================================= */
+:root {
+  --fundo: #F8F1EB;
+  --bege: #D9BBA9;
+  --terracota: #C36A08;
+  --vinho: #8E3309;
+  --medio: #7D472B;
+  --cafe: #3E1402;
+  --container: 1100px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--fundo);
+  color: var(--cafe);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+.container { width: min(var(--container), 90%); margin: 0 auto; }
+
+/* ---------- Botões e rótulos ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 400;
+  border: 1px solid var(--medio);
+  cursor: pointer;
+  transition: all .25s ease;
+  font-family: inherit;
+}
+.btn-primary { background: var(--medio); color: var(--fundo); }
+.btn-primary:hover { background: var(--cafe); border-color: var(--cafe); }
+.btn-outline { background: transparent; color: var(--cafe); border-color: var(--cafe); }
+.btn-outline:hover { background: var(--cafe); color: var(--fundo); }
+
+.eyebrow {
+  display: inline-block;
+  color: var(--terracota);
+  font-size: 15px;
+  font-weight: 500;
+  border-bottom: 1.5px solid var(--terracota);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+h1, h2 { font-weight: 500; line-height: 1.2; }
+h1 { font-size: clamp(28px, 4vw, 40px); }
+h2 { font-size: clamp(26px, 3.4vw, 34px); }
+
+/* ---------- Header ---------- */
+.header { position: relative; z-index: 10; padding: 22px 0; }
+.nav { display: flex; align-items: center; justify-content: space-between; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-mark {
+  width: 56px; height: 56px;
+  border: 2px solid var(--vinho);
+  border-radius: 10px;
+  display: grid; place-items: center;
+  font-weight: 600; color: var(--vinho); font-size: 20px;
+}
+.logo-text strong { display: block; font-size: 18px; color: var(--vinho); font-weight: 600; line-height: 1.1; }
+.logo-text span { font-size: 8px; letter-spacing: 3px; color: var(--vinho); text-transform: uppercase; }
+.menu { display: flex; gap: 28px; font-size: 14px; }
+.menu a { padding-bottom: 3px; border-bottom: 1.5px solid transparent; transition: .2s; }
+.menu a:hover, .menu a.active { color: var(--terracota); border-color: var(--terracota); }
+.menu-toggle { display: none; background: none; border: 0; font-size: 28px; color: var(--cafe); cursor: pointer; }
+
+/* ---------- Formas orgânicas ---------- */
+.blob { position: absolute; z-index: 0; }
+.blob-hero-left {
+  left: -90px; top: 120px; width: 220px; height: 230px;
+  background: var(--medio);
+  border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+}
+.blob-sobre-right {
+  right: -110px; bottom: 40px; width: 260px; height: 300px;
+  background: var(--cafe);
+  border-radius: 60% 40% 45% 55% / 55% 50% 50% 45%;
+}
+
+/* ---------- Placeholder de imagem (troque por <img>) ---------- */
+.ph {
+  width: 100%; height: 100%;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--bege), #c9a58f);
+  color: var(--medio);
+  font-size: 13px; text-align: center; padding: 10px;
+}
+.hero-img img, .about-photo img, .exp-photo img, .prod-item img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+/* ---------- Hero ---------- */
+.hero { position: relative; padding: 30px 0 60px; }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.hero-text p { margin: 22px 0 34px; font-size: 14.5px; font-weight: 300; max-width: 430px; }
+.hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
+.hero-img {
+  aspect-ratio: 1 / .92;
+  border-radius: 55% 45% 50% 50% / 48% 55% 45% 52%;
+  overflow: hidden;
+  background: var(--bege);
+}
+
+/* ---------- Transição em onda ---------- */
+.wave { display: block; width: 100%; line-height: 0; }
+.wave svg { display: block; width: 100%; height: clamp(70px, 9vw, 130px); }
+.wave path { fill: var(--cafe); }
+
+/* ---------- Sobre ---------- */
+.about { position: relative; padding: 30px 0 90px; }
+.about-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center; }
+.about h2 { margin-bottom: 16px; }
+.about p { font-size: 13px; font-weight: 300; max-width: 520px; }
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 22px; font-size: 12.5px; }
+.checks li::before { content: "✔"; color: var(--medio); margin-right: 8px; font-size: 12px; }
+.about-photos { display: grid; grid-template-columns: 1fr 1.15fr; gap: 14px; align-items: end; }
+.about-photo { border-radius: 18px; overflow: hidden; background: var(--bege); }
+.about-photo.small { aspect-ratio: 3 / 4; }
+.about-photo.big { aspect-ratio: 3 / 4.6; }
+
+/* ---------- Produtos (fundo bege) ---------- */
+.products { position: relative; background: var(--bege); padding: 20px 0 110px; }
+.curve-top, .curve-bottom { position: absolute; left: 0; width: 100%; line-height: 0; }
+.curve-top { top: -1px; }
+.curve-bottom { bottom: -1px; }
+.curve-top svg, .curve-bottom svg { width: 100%; height: clamp(40px, 6vw, 80px); display: block; }
+.curve-top path, .curve-bottom path { fill: var(--fundo); }
+.products-head { text-align: center; padding-top: clamp(50px, 7vw, 90px); margin-bottom: 40px; }
+.products-head .eyebrow { color: var(--vinho); border-color: var(--vinho); }
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.prod-item {
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--fundo);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.prod-item:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(62, 20, 2, .18); }
+.products-cta { text-align: center; margin-top: 40px; }
+
+/* ---------- Experiência ---------- */
+.experience { position: relative; padding: 90px 0; }
+.exp-grid { display: grid; grid-template-columns: 320px 1fr; gap: 50px; align-items: center; }
+.exp-photos { position: relative; height: 380px; }
+.exp-photo { position: absolute; border-radius: 18px; overflow: hidden; background: var(--bege); }
+.exp-photo.a { left: 0; top: 0; width: 230px; height: 300px; }
+.exp-photo.b { left: 110px; top: 190px; width: 180px; height: 190px; border: 6px solid var(--fundo); }
+.exp-text h2 span { color: var(--terracota); }
+.exp-text > p { margin: 12px 0 24px; font-size: 14px; font-weight: 300; max-width: 560px; }
+.diffs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 26px; max-width: 560px; }
+.diff { background: var(--bege); border-radius: 14px; padding: 16px 12px; text-align: center; transition: transform .3s ease; }
+.diff:hover { transform: translateY(-4px); }
+.diff i { display: block; font-size: 24px; color: var(--vinho); margin-bottom: 6px; }
+.diff b { display: block; font-size: 13.5px; font-weight: 500; line-height: 1.3; }
+.diff small { display: block; font-size: 11.5px; font-weight: 300; color: var(--medio); line-height: 1.4; margin-top: 3px; }
+.exp-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.assinatura { margin-top: 18px; font-family: 'Dancing Script', cursive; font-size: 26px; color: var(--vinho); }
+
+/* ---------- Footer ---------- */
+.footer-wave { display: block; line-height: 0; background: var(--fundo); margin-top: -1px; }
+.footer-wave svg { display: block; width: 100%; height: clamp(60px, 8vw, 120px); }
+.footer-wave path { fill: var(--cafe); }
+.footer { background: var(--cafe); color: var(--bege); }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 40px; padding: 30px 0 50px; }
+.footer .logo-mark { border-color: var(--bege); color: var(--bege); }
+.footer .logo-text strong, .footer .logo-text span { color: var(--bege); }
+.footer p { font-size: 13px; font-weight: 300; margin-top: 16px; max-width: 280px; }
+.footer h4 { font-size: 15px; font-weight: 500; color: var(--fundo); margin-bottom: 16px; }
+.footer li { font-size: 13px; font-weight: 300; margin-bottom: 9px; }
+.footer li a:hover { color: var(--terracota); }
+.socials { display: flex; gap: 10px; margin-top: 16px; }
+.socials a {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--medio);
+  display: grid; place-items: center;
+  font-size: 12px; font-weight: 500;
+  transition: .25s;
+}
+.socials a:hover { background: var(--terracota); border-color: var(--terracota); color: var(--fundo); }
+.footer-copy { border-top: 1px solid var(--medio); padding: 18px 0; text-align: center; font-size: 12px; font-weight: 300; }
+
+/* ---------- Animação ao rolar ---------- */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 960px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .exp-grid { grid-template-columns: 1fr; }
+  .exp-photos { max-width: 320px; margin: 0 auto; }
+}
+@media (max-width: 760px) {
+  .menu-toggle { display: block; }
+  .menu {
+    position: absolute; top: 90px; right: 5%;
+    flex-direction: column; gap: 14px;
+    background: var(--fundo);
+    padding: 20px 28px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(62, 20, 2, .15);
+    display: none;
+  }
+  .menu.open { display: flex; }
+  .hero-grid, .about-grid { grid-template-columns: 1fr; }
+  .hero-img { order: -1; max-width: 420px; margin: 0 auto; }
+  .blob-hero-left { top: 90px; width: 150px; height: 160px; left: -70px; }
+  .blob-sobre-right { display: none; }
+}
+@media (max-width: 520px) {
+  .footer-grid, .checks, .diffs { grid-template-columns: 1fr; }
+  .prod-grid { grid-template-columns: repeat(2, 1fr); }
+}
