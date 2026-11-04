@@ -1,19 +1,21 @@
-{{-- ===== HEADER ===== --}}
-<header class="header">
-    <div class="container nav">
+<header class="site-header">
+    <div class="container header-container">
+        
+        <!-- Logo com caixa tracejada -->
         <a href="#home" class="logo">
-            <div class="logo-mark">GC</div>
-            <div class="logo-text">
-                <strong>Geane Cliz</strong>
-                <span>Artesanato</span>
-            </div>
+            <img src="{{ asset('site/img/imagem-site/logos/logo-horizontal-original.svg') }}" alt="Ateliê Geane Cliz" class="logo-img">
         </a>
-        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
-        <nav class="menu">
-            <a href="#home" class="active">Home</a>
+
+        <!-- Botão Menu Mobile -->
+        <button class="btn-menu" aria-label="Abrir menu">☰</button>
+
+        <!-- Menu de Navegação -->
+        <nav class="nav-menu">
+            <a href="#home" class="ativo">Home</a>
             <a href="#sobre">Sobre</a>
             <a href="#produtos">Produtos</a>
             <a href="#contato">Contato</a>
         </nav>
+
     </div>
 </header>
