@@ -1,0 +1,150 @@
+/* ---------- Produtos (Layout Mosaico / Grid Assimétrico) ---------- */
+.produtos {
+    position: relative;
+    padding: 20px 0 110px;
+}
+
+.curva-topo,
+.curva-baixo {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.curva-topo {
+    top: -1px;
+}
+
+.curva-baixo {
+    bottom: -1px;
+}
+
+.curva-topo svg,
+.curva-baixo svg {
+    width: 100%;
+    height: clamp(40px, 6vw, 80px);
+    display: block;
+}
+
+.curva-topo path,
+.curva-baixo path {
+    fill: var(--fundo);
+}
+
+.produtos-cabecalho {
+    text-align: center;
+    padding-top: clamp(50px, 7vw, 90px);
+    margin-bottom: 40px;
+}
+
+.produtos-cabecalho .eyebrow {
+    color: var(--vinho);
+    border-color: var(--vinho);
+}
+
+/* Grid principal de 4 colunas */
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilo base do item */
+.produto-item {
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.produto-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(62, 20, 2, 0.18);
+}
+
+/* Configuração individual de cada produto para formar o mosaico */
+
+/* 1. Boneca (Vertical/Alta - Ocupa 1 coluna) */
+.produto-item:nth-child(1) {
+    grid-column: span 1;
+    aspect-ratio: 3 / 4;
+}
+
+/* 2. Nécessaire (Quadrada/Média - Ocupa 1 coluna) */
+.produto-item:nth-child(2) {
+    grid-column: span 1;
+    aspect-ratio: 3 / 4;
+}
+
+/* 3. Toalha (Larga/Horizontal na ponta direita - Ocupa 2 colunas) */
+.produto-item:nth-child(3) {
+    grid-column: span 2;
+    aspect-ratio: 16 / 10;
+}
+
+/* 4. Tapete (Largo/Horizontal na ponta esquerda da 2ª linha - Ocupa 2 colunas) */
+.produto-item:nth-child(4) {
+    grid-column: span 2;
+    aspect-ratio: 16 / 10;
+}
+
+/* 5. Manta de Crochê (Vertical - Ocupa 1 coluna) */
+.produto-item:nth-child(5) {
+    grid-column: span 1;
+    aspect-ratio: 4 / 5;
+}
+
+/* 6. Elefante (Vertical - Ocupa 1 coluna) */
+.produto-item:nth-child(6) {
+    grid-column: span 1;
+    aspect-ratio: 4 / 5;
+}
+
+.produtos-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Responsivo para Tablets e Telemóveis */
+@media (max-width: 768px) {
+    .produtos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .produto-item:nth-child(3),
+    .produto-item:nth-child(4) {
+        grid-column: span 2; /* Mantém os itens largos ocupando a largura total no tablet */
+    }
+    .produto-item:nth-child(1),
+    .produto-item:nth-child(2),
+    .produto-item:nth-child(5),
+    .produto-item:nth-child(6) {
+        grid-column: span 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .produtos-grid {
+        grid-template-columns: 1fr;
+    }
+    .produto-item:nth-child(1),
+    .produto-item:nth-child(2),
+    .produto-item:nth-child(3),
+    .produto-item:nth-child(4),
+    .produto-item:nth-child(5),
+    .produto-item:nth-child(6) {
+        grid-column: span 1;
+    }
+}

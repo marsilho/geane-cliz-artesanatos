@@ -1,8 +1,6 @@
-{{-- ===== SOBRE ===== --}}
-<section class="about" id="sobre">
-    <span class="blob blob-sobre-right"></span>
-    <div class="container about-grid">
-        <div class="reveal">
+<section class="sobre" id="sobre">
+    <div class="container sobre-grid">
+        <div class="sobre-conteudo">
             <span class="eyebrow">Sobre nós</span>
             <h2>Feito com as Próprias Mãos,<br>Criado com Afeto para o Seu Lar</h2>
             <p>Cada peça do Ateliê Geane Cliz nasce do cuidado com os detalhes e da paixão pela arte manual tradicional. Criamos bordados, tapetes, paninhos de boca e necessaires que carregam história, textura e carinho em cada ponto.</p>
@@ -13,13 +11,16 @@
                 <li>Cuidado em cada ponto e acabamento</li>
             </ul>
         </div>
-        <div class="about-photos reveal">
-            {{-- Troque por <img src="{{ asset('site/img/sobre-1.jpg') }}" alt="..."> --}}
-            <div class="about-photo small">
-                <div class="ph">Foto 1</div>
+
+        <div class="sobre-photos">
+            <!-- Primeira foto (menor / vertical) -->
+            <div class="sobre-photo">
+                <img src="{{ asset('site/img/naninha-amarela-sobre.png') }}" alt="Peça artesanal do ateliê">
             </div>
-            <div class="about-photo big">
-                <div class="ph">Foto 2</div>
+
+            <!-- Segunda foto (maior) -->
+            <div class="sobre-photo">
+                <img src="{{ asset('site/img/mão-costurando-sobre.png') }}" alt="mão-costurando-sobre">
             </div>
         </div>
     </div>
