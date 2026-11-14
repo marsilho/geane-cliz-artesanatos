@@ -3,7 +3,7 @@
         
         <!-- Logo com caixa tracejada -->
         <a href="#home" class="logo">
-            <img src="{{ asset('site/img/imagem-site/logos/logo-horizontal-original.svg') }}" alt="Ateliê Geane Cliz" class="logo-img">
+            <img src="{{ asset('site/img/logos/logo-horizontal-original.svg') }}" alt="Ateliê Geane Cliz" class="logo-img">
         </a>
 
         <!-- Botão Menu Mobile -->

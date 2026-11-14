@@ -3,6 +3,7 @@
 @import url("components/banner.css");
 @import url("components/sobre.css");
 @import url("components/produtos.css");
+@import url("components/conexao.css");
 /* =========================================================
    Ateliê Geane Cliz — style.css
    Paleta: fundo #F8F1EB | bege #D9BBA9 | terracota #C36A08
@@ -194,98 +195,6 @@ h2 {
 
 
 
-
-/* ---------- Experiência ---------- */
-.experience {
-    position: relative;
-    padding: 90px 0;
-}
-.exp-grid {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 50px;
-    align-items: center;
-}
-.exp-photos {
-    position: relative;
-    height: 380px;
-}
-.exp-photo {
-    position: absolute;
-    border-radius: 18px;
-    overflow: hidden;
-    background: var(--bege);
-}
-.exp-photo.a {
-    left: 0;
-    top: 0;
-    width: 230px;
-    height: 300px;
-}
-.exp-photo.b {
-    left: 110px;
-    top: 190px;
-    width: 180px;
-    height: 190px;
-    border: 6px solid var(--fundo);
-}
-.exp-text h2 span {
-    color: var(--terracota);
-}
-.exp-text > p {
-    margin: 12px 0 24px;
-    font-size: 14px;
-    font-weight: 300;
-    max-width: 560px;
-}
-.diffs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-bottom: 26px;
-    max-width: 560px;
-}
-.diff {
-    background: var(--bege);
-    border-radius: 14px;
-    padding: 16px 12px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-.diff:hover {
-    transform: translateY(-4px);
-}
-.diff i {
-    display: block;
-    font-size: 24px;
-    color: var(--vinho);
-    margin-bottom: 6px;
-}
-.diff b {
-    display: block;
-    font-size: 13.5px;
-    font-weight: 500;
-    line-height: 1.3;
-}
-.diff small {
-    display: block;
-    font-size: 11.5px;
-    font-weight: 300;
-    color: var(--medio);
-    line-height: 1.4;
-    margin-top: 3px;
-}
-.exp-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-.assinatura {
-    margin-top: 18px;
-    font-family: "Dancing Script", cursive;
-    font-size: 26px;
-    color: var(--vinho);
-}
 
 /* ---------- Footer ---------- */
 .footer-wave {

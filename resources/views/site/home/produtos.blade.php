@@ -1,11 +1,5 @@
 {{-- ===== PRODUTOS ===== --}}
 <section class="produtos" id="produtos">
-    <div class="curva-topo" aria-hidden="true">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-            <path d="M0,0 L1440,0 L1440,30 C1000,90 450,-10 0,50 Z" />
-        </svg>
-    </div>
-
     <div class="container">
         <div class="produtos-cabecalho">
             <span class="eyebrow">Conheça</span>
@@ -14,31 +8,55 @@
 
         <div class="produtos-grid">
             @php
-            $produtosImagens = [
-            'boneca-produtos.png',
-            'necessaire-produtos.png',
-            'toalha-de-banho-produtos.png',
-            'jogo-de-cozinha-produtos.png',
-            'naninhas-produtos.png',
-            'tapete-produtos.png'
-            ];
+                $produtosData = [
+                    [
+                        'imagem' => 'boneca-produtos.png',
+                        'nome' => 'Boneca Antonieta',
+                        'preco' => 'R$ 120,00'
+                    ],
+                    [
+                        'imagem' => 'necessaire-produtos.png',
+                        'nome' => 'Nécessaire Artesanal',
+                        'preco' => 'R$ 65,00'
+                    ],
+                    [
+                        'imagem' => 'toalha-de-banho-produtos.png',
+                        'nome' => 'Toalha Bordada',
+                        'preco' => 'R$ 95,00'
+                    ],
+                    [
+                        'imagem' => 'jogo-de-cozinha-produtos.png',
+                        'nome' => 'Jogo de Cozinha',
+                        'preco' => 'R$ 150,00'
+                    ],
+                    [
+                        'imagem' => 'naninhas-produtos.png',
+                        'nome' => 'Naninha Infantil',
+                        'preco' => 'R$ 45,00'
+                    ],
+                    [
+                        'imagem' => 'tapete-produtos.png',
+                        'nome' => 'Tapete de Crochê',
+                        'preco' => 'R$ 110,00'
+                    ],
+                ];
             @endphp
 
-            @foreach ($produtosImagens as $index => $imagem)
-            <a href="{{ url('/produtos') }}" class="produto-item">
-                <img src="{{ asset('site/img/produtos/' . $imagem) }}" alt="Produto {{ $index + 1 }}">
-            </a>
+            @foreach ($produtosData as $produto)
+                <a href="{{ url('/produtos') }}" class="produto-item">
+                    <img src="{{ asset('site/img/produtos/' . $produto['imagem']) }}" alt="{{ $produto['nome'] }}">
+                    
+                    {{-- Caixa de informações que desliza no hover --}}
+                    <div class="produto-info">
+                        <span class="produto-nome">{{ $produto['nome'] }}</span>
+                        <span class="produto-preco">{{ $produto['preco'] }}</span>
+                    </div>
+                </a>
             @endforeach
         </div>
 
         <div class="produtos-cta">
             <a href="{{ url('/produtos') }}" class="btn btn-outline">Ver mais</a>
         </div>
-    </div>
-
-    <div class="curva-baixo" aria-hidden="true">
-        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
-            <path d="M0,80 L1440,80 L1440,40 C1000,-10 450,90 0,30 Z" />
-        </svg>
     </div>
 </section>

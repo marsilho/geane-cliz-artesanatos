@@ -1,0 +1,125 @@
+.experiencia {
+    position: relative;
+    padding: 90px 0;
+}
+
+.experiencia-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.experiencia-fotos {
+    position: relative;
+    height: 380px;
+}
+
+.experiencia-foto {
+    position: absolute;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--bege);
+}
+
+.experiencia-foto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.experiencia-foto.a {
+    left: 0;
+    top: 0;
+    width: 230px;
+    height: 300px;
+}
+
+.experiencia-foto.b {
+    left: 110px;
+    top: 190px;
+    width: 180px;
+    height: 190px;
+    border: 6px solid var(--fundo);
+}
+
+.experiencia-texto h2 span {
+    color: var(--terracota);
+}
+
+.experiencia-texto > p {
+    margin: 12px 0 24px;
+    font-size: 14px;
+    font-weight: 300;
+    max-width: 560px;
+}
+
+.diferenciais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 26px;
+    max-width: 560px;
+}
+
+.diferencial {
+    background: var(--bege);
+    border-radius: 14px;
+    padding: 16px 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.diferencial:hover {
+    transform: translateY(-4px);
+}
+
+.diferencial i {
+    display: block;
+    font-size: 24px;
+    color: var(--vinho);
+    margin-bottom: 6px;
+}
+
+.diferencial b {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.diferencial small {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--medio);
+    line-height: 1.4;
+    margin-top: 3px;
+}
+
+.experiencia-acoes {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.assinatura {
+    margin-top: 18px;
+    font-family: "Dancing Script", cursive;
+    font-size: 26px;
+    color: var(--vinho);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .experiencia-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .experiencia-fotos {
+        height: 320px;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}

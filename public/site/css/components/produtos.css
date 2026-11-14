@@ -1,37 +1,29 @@
-/* ---------- Produtos (Layout Mosaico / Grid Assimétrico) ---------- */
+/* ---------- Produtos (Layout Mosaico / Grid Assimétrico com Bolha) ---------- */
 .produtos {
     position: relative;
     padding: 20px 0 110px;
+    overflow: hidden; /* Garante que a bolha não "escape" para fora da secção */
 }
 
-.curva-topo,
-.curva-baixo {
+/* Bolha decorativa de fundo no canto */
+.produtos::after {
+    content: '';
     position: absolute;
-    left: 0;
-    width: 100%;
-    line-height: 0;
-    z-index: 2;
+    bottom: 300px;
+    left: -70px;
+    width: 420px;
+    height: 420px;
+    background-image: url(/site/img/bolha-marrom-escuro.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1;
     pointer-events: none;
 }
 
-.curva-topo {
-    top: -1px;
-}
-
-.curva-baixo {
-    bottom: -1px;
-}
-
-.curva-topo svg,
-.curva-baixo svg {
-    width: 100%;
-    height: clamp(40px, 6vw, 80px);
-    display: block;
-}
-
-.curva-topo path,
-.curva-baixo path {
-    fill: var(--fundo);
+/* Garante que o conteúdo fique acima da bolha de fundo */
+.produtos .container {
+    position: relative;
+    z-index: 2;
 }
 
 .produtos-cabecalho {
@@ -41,7 +33,7 @@
 }
 
 .produtos-cabecalho .eyebrow {
-    color: var(--vinho);
+    color: var(--terracota);
     border-color: var(--vinho);
 }
 
@@ -55,9 +47,10 @@
     padding: 0 20px;
 }
 
-/* Estilo base do item */
+/* Estilo base do item (Bordas normais) */
 .produto-item {
-    border-radius: 14px;
+    position: relative;
+    border-radius: 0;
     overflow: hidden;
     background: #fff;
     display: flex;
@@ -70,47 +63,85 @@
         box-shadow 0.3s ease;
 }
 
+.produto-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.produto-item:hover img {
+    transform: scale(1.03);
+}
+
 .produto-item:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     box-shadow: 0 14px 30px rgba(62, 20, 2, 0.18);
 }
 
-/* Configuração individual de cada produto para formar o mosaico */
+/* Aba de Informações (Versão Clara e Harmoniosa) */
+.produto-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(250, 246, 241, 0.95);
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    border-top: 1px solid rgba(110, 40, 20, 0.12);
+}
 
-/* 1. Boneca (Vertical/Alta - Ocupa 1 coluna) */
+.produto-item:hover .produto-info {
+    transform: translateY(0);
+}
+
+.produto-nome {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #3e1402;
+    letter-spacing: 0.3px;
+}
+
+.produto-preco {
+    font-size: 14px;
+    font-weight: 500;
+    color: #a85234;
+}
+
+/* Configuração individual de cada produto no mosaico */
 .produto-item:nth-child(1) {
     grid-column: span 1;
     aspect-ratio: 3 / 4;
 }
 
-/* 2. Nécessaire (Quadrada/Média - Ocupa 1 coluna) */
 .produto-item:nth-child(2) {
     grid-column: span 1;
     aspect-ratio: 3 / 4;
 }
 
-/* 3. Toalha (Larga/Horizontal na ponta direita - Ocupa 2 colunas) */
 .produto-item:nth-child(3) {
     grid-column: span 2;
-    aspect-ratio: 16 / 10;
+    height: 100%;
 }
 
-/* 4. Tapete (Largo/Horizontal na ponta esquerda da 2ª linha - Ocupa 2 colunas) */
 .produto-item:nth-child(4) {
     grid-column: span 2;
-    aspect-ratio: 16 / 10;
+    height: 100%;
 }
 
-/* 5. Manta de Crochê (Vertical - Ocupa 1 coluna) */
 .produto-item:nth-child(5) {
     grid-column: span 1;
-    aspect-ratio: 4 / 5;
+    height: 100%;
 }
 
-/* 6. Elefante (Vertical - Ocupa 1 coluna) */
 .produto-item:nth-child(6) {
     grid-column: span 1;
-    aspect-ratio: 4 / 5;
+    height: 100%;
 }
 
 .produtos-cta {
@@ -125,7 +156,7 @@
     }
     .produto-item:nth-child(3),
     .produto-item:nth-child(4) {
-        grid-column: span 2; /* Mantém os itens largos ocupando a largura total no tablet */
+        grid-column: span 2;
     }
     .produto-item:nth-child(1),
     .produto-item:nth-child(2),
