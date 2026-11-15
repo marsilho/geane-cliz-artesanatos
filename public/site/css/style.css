@@ -194,9 +194,9 @@ h2 {
 /* FIM HEADER */
 
 
-
-
-/* ---------- Footer ---------- */
+/* =========================================
+   FOOTER
+   ========================================= */
 .footer-wave {
     display: block;
     line-height: 0;
@@ -207,6 +207,11 @@ h2 {
     display: block;
     width: 100%;
     height: clamp(60px, 8vw, 120px);
+}
+.footer-logo-img {
+    height: 62px;
+    width: 200px;
+    object-fit: contain;
 }
 .footer-wave path {
     fill: var(--cafe);
@@ -220,14 +225,6 @@ h2 {
     grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
     gap: 40px;
     padding: 30px 0 50px;
-}
-.footer .logo-mark {
-    border-color: var(--bege);
-    color: var(--bege);
-}
-.footer .logo-text strong,
-.footer .logo-text span {
-    color: var(--bege);
 }
 .footer p {
     font-size: 13px;
@@ -254,21 +251,28 @@ h2 {
     gap: 10px;
     margin-top: 16px;
 }
+
 .socials a {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: 1px solid var(--medio);
     display: grid;
     place-items: center;
-    font-size: 12px;
-    font-weight: 500;
-    transition: 0.25s;
+    color: var(--bege); /* Cor inicial do ícone */
+    transition: all 0.25s ease;
 }
+
+/* Tamanho e comportamento do ícone dentro do círculo */
+.socials a i {
+    font-size: 18px;
+}
+
 .socials a:hover {
     background: var(--terracota);
     border-color: var(--terracota);
     color: var(--fundo);
+    transform: translateY(-2px);
 }
 .footer-copy {
     border-top: 1px solid var(--medio);
@@ -279,17 +283,6 @@ h2 {
 }
 
 /* ---------- Animação ao rolar ---------- */
-.reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-        opacity 0.7s ease,
-        transform 0.7s ease;
-}
-.reveal.visible {
-    opacity: 1;
-    transform: none;
-}
 @media (prefers-reduced-motion: reduce) {
     .reveal {
         opacity: 1;

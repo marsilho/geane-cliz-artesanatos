@@ -1,6 +1,41 @@
+/* ---------- Experiência (Com Bolha Decorativa de Fundo) ---------- */
 .experiencia {
     position: relative;
     padding: 90px 0;
+    overflow: hidden; /* Garante que a bolha não transborde para fora da secção */
+}
+
+/* Bolha decorativa de fundo no canto direito */
+.experiencia::after {
+    content: "";
+    position: absolute;
+    top: -40px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background-image: url(/site/img/bolha-marrom-escuro.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0.7;
+    z-index: 1;
+    pointer-events: none;
+    animation: flutuarBolha 8s ease-in-out infinite;
+}
+
+@keyframes flutuarBolha {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(-12px, 15px) rotate(6deg) scale(1.04);
+    }
+}
+
+/* Garante que o conteúdo da grelha fique acima da bolha de fundo */
+.experiencia .container {
+    position: relative;
+    z-index: 2;
 }
 
 .experiencia-grid {

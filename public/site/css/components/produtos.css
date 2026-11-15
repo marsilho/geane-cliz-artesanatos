@@ -7,7 +7,7 @@
 
 /* Bolha decorativa de fundo no canto */
 .produtos::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: 300px;
     left: -70px;
@@ -16,8 +16,20 @@
     background-image: url(/site/img/bolha-marrom-escuro.svg);
     background-repeat: no-repeat;
     background-size: contain;
+    opacity: 0.7;
     z-index: 1;
     pointer-events: none;
+    animation: flutuarBolha 8s ease-in-out infinite;
+}
+
+@keyframes flutuarBolha {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+    }
+    50% {
+        transform: translate(-12px, 15px) rotate(6deg) scale(1.04);
+    }
 }
 
 /* Garante que o conteúdo fique acima da bolha de fundo */

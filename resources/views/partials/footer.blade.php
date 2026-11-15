@@ -4,11 +4,7 @@
         <div class="footer-grid">
             <div>
                 <a href="#home" class="logo">
-                    <div class="logo-mark">GC</div>
-                    <div class="logo-text">
-                        <strong>Geane Cliz</strong>
-                        <span>Artesanato</span>
-                    </div>
+                    <img src="{{ asset('site/img/logos/logo-horizontal-branco.svg') }}" alt="Logo Ateliê Geane Cliz" class="footer-logo-img">
                 </a>
                 <p>Peças artesanais feitas com carinho, para lares cheios de vida e histórias.</p>
             </div>
@@ -35,12 +31,23 @@
                 <ul>
                     <li>(00) 00000-0000</li>
                     <li>contato@geanecliz.com.br</li>
-                    <li>Cidade, SP</li>
+                    <li>São paulo, SP</li>
                 </ul>
                 <div class="socials">
-                    <a href="#" aria-label="Instagram">IG</a>
-                    <a href="#" aria-label="WhatsApp">WA</a>
-                    <a href="#" aria-label="Facebook">FB</a>
+                    {{-- Instagram --}}
+                    <a href="https://instagram.com/seu-usuario" aria-label="Instagram" target="_blank" rel="noopener">
+                        <i class="ti ti-brand-instagram" aria-hidden="true"></i>
+                    </a>
+
+                    {{-- WhatsApp --}}
+                    <a href="https://wa.me/5500000000000?text={{ urlencode('Olá! Vim pelo site e gostaria de saber mais sobre as peças.') }}" aria-label="WhatsApp" target="_blank" rel="noopener">
+                        <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+                    </a>
+
+                    {{-- E-mail --}}
+                    <a href="mailto:contato@geanecliz.com.br" aria-label="E-mail">
+                        <i class="ti ti-mail" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </div>
