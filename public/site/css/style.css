@@ -33,6 +33,10 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+/* Evita barra lateral sem cortar as bolhas entre as seções */
+/* main {
+    overflow-x: clip;
+} */
 img {
     max-width: 100%;
     display: block;
@@ -106,8 +110,9 @@ h2 {
 .site-header {
     padding: 20px 0;
     position: relative;
-    z-index: 10;
-    border-bottom: 1px solid rgba(125, 72, 43, 0.12);
+    z-index: 10; /* Mantém logo e links sempre clicáveis acima dos detalhes do banner */
+    background-color: transparent;
+    border-bottom: none; /* Remove a linha divisória reta */
 }
 
 .header-container {

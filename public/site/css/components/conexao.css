@@ -1,25 +1,26 @@
-/* ---------- Experiência (Com Bolha Decorativa de Fundo) ---------- */
+/* ---------- Experiência (Com Bolha Translúcida Contínua) ---------- */
 .experiencia {
     position: relative;
     padding: 90px 0;
-    overflow: hidden; /* Garante que a bolha não transborde para fora da secção */
+    background-color: var(--fundo);
+    overflow: visible; /* Evita cortes nas bordas da seção */
+    z-index: 1;
 }
 
-/* Bolha decorativa de fundo no canto direito */
+/* Bolha decorativa suave no lado direito (alternando com a bolha esquerda de Produtos) */
 .experiencia::after {
     content: "";
     position: absolute;
-    top: -40px;
-    right: -100px;
+    top: -30px;
+    right: -110px;
     width: 400px;
     height: 400px;
-    background-image: url(/site/img/bolha-marrom-escuro.svg);
-    background-repeat: no-repeat;
-    background-size: contain;
-    opacity: 0.7;
+    border-radius: 44% 56% 42% 58% / 55% 42% 58% 45%;
+    background-color: var(--medio);
+    opacity: 0.08;
     z-index: 1;
     pointer-events: none;
-    animation: flutuarBolha 8s ease-in-out infinite;
+    animation: flutuarBolha 12s ease-in-out infinite;
 }
 
 @keyframes flutuarBolha {
@@ -28,11 +29,11 @@
         transform: translate(0, 0) rotate(0deg) scale(1);
     }
     50% {
-        transform: translate(-12px, 15px) rotate(6deg) scale(1.04);
+        transform: translate(-15px, 15px) rotate(7deg) scale(1.04);
     }
 }
 
-/* Garante que o conteúdo da grelha fique acima da bolha de fundo */
+/* Garante que o conteúdo da grelha fique sempre clicável acima da bolha */
 .experiencia .container {
     position: relative;
     z-index: 2;
@@ -84,9 +85,11 @@
 }
 
 .experiencia-texto > p {
-    margin: 12px 0 24px;
     font-size: 14px;
-    font-weight: 300;
+    color: var(--medio);
+    line-height: 1.7;
+    margin: 12px 0 24px;
+    font-weight: 400;
     max-width: 560px;
 }
 
@@ -152,9 +155,16 @@
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
     .experiencia-fotos {
         height: 320px;
         max-width: 320px;
         margin: 0 auto;
+    }
+
+    .experiencia::after {
+        width: 240px;
+        height: 240px;
+        right: -60px;
     }
 }

@@ -2,32 +2,80 @@
    BANNER PRINCIPAL — ATELIÊ GEANE CLIZ
    ========================================= */
 
-/* Transição em Onda do Banner */
+/* Transição em Onda do Banner + Integração Fluida com o Header */
 .banner-hero {
     background-color: var(--fundo);
-    padding: 65px 0 190px; /* Espaço inferior ajustado para acomodar a faixa larga */
+    margin-top: -102px; /* Puxa o banner para trás da altura exata do .site-header */
+    padding: 167px 0 190px; /* Compensa os 102px para manter o alinhamento do conteúdo */
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Permite que os elementos ultrapassem a linha do menu sem corte */
+    z-index: 1;
+}
+
+/* Detalhe de fundo 1: Bolha orgânica suave atravessando o canto superior esquerdo do menu */
+.banner-hero::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: -100px;
+    width: 390px;
+    height: 390px;
+    border-radius: 54% 46% 38% 62% / 49% 58% 42% 51%;
+    background-color: var(--medio);
+    opacity: 0.07;
+    z-index: 0;
+    pointer-events: none;
+    animation: flutuarFundoBanner 12s ease-in-out infinite;
+}
+
+/* Detalhe de fundo 2: Pontinhos artesanais sutis próximos aos links do menu */
+.banner-hero::after {
+    content: "";
+    position: absolute;
+    top: 65px;
+    right: 4%;
+    width: 180px;
+    height: 180px;
+    background-image: radial-gradient(
+        var(--terracota) 1.5px,
+        transparent 1.5px
+    );
+    background-size: 18px 18px;
+    opacity: 0.22;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes flutuarFundoBanner {
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(18px, 14px) rotate(8deg);
+    }
 }
 
 .banner-onda {
     position: absolute;
-    bottom: -1px; /* Evita qualquer linha fina de subpixel entre seções */
+    bottom: -1px;
     left: 0;
     width: 100%;
     line-height: 0;
     z-index: 2;
-    pointer-events: none; /* Garante que não bloqueie cliques */
+    pointer-events: none;
 }
 
 .banner-onda svg {
     position: relative;
     display: block;
     width: 100%;
-    height: 210px; /* Altura maior para dar a espessura e curvatura do layout */
+    height: 210px;
 }
 
 .banner-container {
+    position: relative;
+    z-index: 2;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -80,7 +128,8 @@
 /* === BOTÃO PRINCIPAL COM ANIMAÇÃO === */
 .btn-principal {
     position: relative;
-    color: var(--cafe);
+    color: var(--fundo);
+    background-color: var(--medio);
     border: 1px solid var(--medio);
     display: inline-flex !important;
     align-items: center;
@@ -92,7 +141,6 @@
         border-color 0.4s ease;
 }
 
-/* Camada que preenche da esquerda para a direita (Principal) */
 .btn-principal::before {
     content: "";
     position: absolute;
@@ -100,12 +148,11 @@
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: var(--vinho);
+    background-color: var(--cafe);
     z-index: -1;
     transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Estado inicial da seta (Principal) */
 .btn-principal .icone-seta {
     width: 0;
     opacity: 0;
@@ -114,14 +161,12 @@
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* --- EFEITO HOVER (Principal) --- */
 .btn-principal:hover::before {
     width: 100%;
 }
 
 .btn-principal:hover {
     border-color: var(--medio);
-    color: var(--fundo);
 }
 
 .btn-principal:hover .icone-seta {
@@ -146,7 +191,6 @@
         border-color 0.4s ease;
 }
 
-/* Camada que preenche da esquerda para a direita (Secundário) */
 .btn-secundario::before {
     content: "";
     position: absolute;
@@ -154,14 +198,11 @@
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: var(
-        --vinho
-    ); /* Cor de preenchimento do hover secundário */
+    background-color: var(--cafe);
     z-index: -1;
     transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* Estado inicial da seta (Secundário) */
 .btn-secundario .icone-seta {
     width: 0;
     opacity: 0;
@@ -170,7 +211,6 @@
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* --- EFEITO HOVER (Secundário) --- */
 .btn-secundario:hover::before {
     width: 100%;
 }
@@ -196,6 +236,30 @@
     flex: 0 0 520px;
     width: 520px;
     height: 460px;
+}
+
+/* Detalhe de costura tracejada decorativa em volta da composição */
+.banner-imagens::before {
+    content: "";
+    position: absolute;
+    top: -18px;
+    left: -2px;
+    width: 525px;
+    height: 445px;
+    border: 2px dashed rgba(139, 94, 60, 0.28);
+    border-radius: 46% 36% 34% 42% / 36% 40% 42% 44%;
+    z-index: 0;
+    pointer-events: none;
+    animation: girarCostura 25s linear infinite;
+}
+
+@keyframes girarCostura {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* ESTILO BASE DAS BOLHAS */
@@ -224,30 +288,41 @@
 }
 
 /* =========================================
-   1. IMAGEM PRINCIPAL
+   1. IMAGEM PRINCIPAL (COM MOVIMENTO ORGÂNICO)
    ========================================= */
 
 .bolha-principal {
-    width: 470px;
-    height: 400px;
-    top: 5px;
-    left: 35px;
+    width: 495px;
+    height: 415px;
+    top: 0px;
+    left: 15px;
     z-index: 1;
-
     background-color: var(--cafe);
-
-    /* Formato orgânico mais suave */
     border-radius: 42% 32% 30% 38% / 32% 35% 38% 40%;
+    box-shadow: 10px -8px 0 #4a2e1b;
+    animation: pulsarBolhaMarrom 7s ease-in-out infinite;
+}
 
-    box-shadow: 12px -9px 0 #4a2e1b;
+@keyframes pulsarBolhaMarrom {
+    0%,
+    100% {
+        border-radius: 42% 32% 30% 38% / 32% 35% 38% 40%;
+        box-shadow: 12px -9px 0 #4a2e1b;
+    }
+    50% {
+        border-radius: 34% 44% 38% 31% / 40% 31% 42% 34%;
+        box-shadow: 16px -4px 0 #4a2e1b;
+    }
 }
 
 .bolha-principal .img-hero {
-    width: 100%;
-    height: 100%;
+    width: 93%;
+    height: 93%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     object-fit: contain;
     object-position: center;
-    transform: none;
     border-radius: inherit;
 }
 
@@ -262,7 +337,7 @@
     bottom: 30px;
     z-index: 3;
     border-radius: 50%;
-    border: dashed 2px;
+    border: dashed 2px var(--terracota);
 }
 
 /* =========================================
@@ -276,7 +351,7 @@
     bottom: -30px;
     z-index: 4;
     border-radius: 50%;
-    border: dashed 2px;
+    border: dashed 2px var(--terracota);
 }
 
 /* =========================================
@@ -290,7 +365,7 @@
     bottom: 15px;
     z-index: 3;
     border-radius: 50%;
-    border: dashed 2px;
+    border: dashed 2px var(--terracota);
 }
 
 /* =========================================
@@ -315,7 +390,7 @@
 
 @media (max-width: 900px) {
     .banner-hero {
-        padding: 60px 0 80px;
+        padding: 162px 0 80px; /* Mantém a compensação dos 102px do header */
     }
 
     .banner-container {
@@ -343,7 +418,7 @@
 
 @media (max-width: 600px) {
     .banner-hero {
-        padding: 45px 0 65px;
+        padding: 147px 0 65px; /* Mantém a compensação dos 102px do header */
     }
 
     .titulo-banner {
@@ -358,6 +433,10 @@
         transform: scale(0.76);
         margin-top: 0;
         margin-bottom: -100px;
+    }
+
+    .banner-hero::after {
+        display: none;
     }
 }
 

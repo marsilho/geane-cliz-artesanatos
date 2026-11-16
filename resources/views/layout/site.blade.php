@@ -7,7 +7,6 @@
 
 <body>
 
-
     <div>
         @include('partials.header')
     </div>
