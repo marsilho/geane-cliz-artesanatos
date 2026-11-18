@@ -20,7 +20,7 @@ Route::get('/produtos', function () {
 
 // Página Sobre Nós
 Route::get('/sobre', function () {
-    return view('site.home.sobre');
+    return view('site.sobre.sobre');
 })->name('site.sobre');
 
 // Página de Contato

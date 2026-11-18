@@ -2,36 +2,32 @@
 <footer class="footer" id="contato">
     <div class="container">
         <div class="footer-grid">
+            {{-- Coluna 1: Logo e Descrição --}}
             <div>
-                <a href="#home" class="logo">
+                <a href="{{ url('/') }}" class="logo">
                     <img src="{{ asset('site/img/logos/logo-horizontal-branco.svg') }}" alt="Logo Ateliê Geane Cliz" class="footer-logo-img">
                 </a>
                 <p>Peças artesanais feitas com carinho, para lares cheios de vida e histórias.</p>
             </div>
-            <div>
-                <h4>Navegação</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#contato">Contato</a></li>
-                </ul>
-            </div>
+
+            {{-- Coluna 2: Produtos (Opcional, se quiser manter) --}}
             <div>
                 <h4>Produtos</h4>
                 <ul>
-                    <li><a href="{{ url('/produtos') }}">Bordados</a></li>
-                    <li><a href="{{ url('/produtos') }}">Tapetes</a></li>
-                    <li><a href="{{ url('/produtos') }}">Paninhos de boca</a></li>
-                    <li><a href="{{ url('/produtos') }}">Necessaires</a></li>
+                    <li><a href="{{ route('site.produtos') }}">Bordados</a></li>
+                    <li><a href="{{ route('site.produtos') }}">Tapetes</a></li>
+                    <li><a href="{{ route('site.produtos') }}">Paninhos de boca</a></li>
+                    <li><a href="{{ route('site.produtos') }}">Necessaires</a></li>
                 </ul>
             </div>
+
+            {{-- Coluna 3: Contato e Redes Sociais --}}
             <div>
                 <h4>Contato</h4>
                 <ul>
                     <li>(00) 00000-0000</li>
                     <li>contato@geanecliz.com.br</li>
-                    <li>São paulo, SP</li>
+                    <li>São Paulo, SP</li>
                 </ul>
                 <div class="socials">
                     {{-- Instagram --}}
