@@ -337,7 +337,8 @@
     bottom: 30px;
     z-index: 3;
     border-radius: 50%;
-    border: dashed 2px var(--terracota);
+    border: dashed 2px var(--cafe);
+    background: var(--bege);
 }
 
 /* =========================================
@@ -351,7 +352,8 @@
     bottom: -30px;
     z-index: 4;
     border-radius: 50%;
-    border: dashed 2px var(--terracota);
+    border: dashed 2px var(--cafe);
+    background: var(--bege);
 }
 
 /* =========================================
@@ -365,7 +367,8 @@
     bottom: 15px;
     z-index: 3;
     border-radius: 50%;
-    border: dashed 2px var(--terracota);
+    border: dashed 2px var(--cafe);
+    background: var(--bege);
 }
 
 /* =========================================

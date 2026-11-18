@@ -1,4 +1,3 @@
-
 /* Importação dos Componentes e Secções */
 @import url("components/banner.css");
 @import url("components/sobre.css");
@@ -198,7 +197,6 @@ h2 {
 
 /* FIM HEADER */
 
-
 /* =========================================
    FOOTER
    ========================================= */
@@ -358,8 +356,6 @@ h2 {
     }
 }
 
-
-
 /* =========================================
    PÁGINA SOBRE — ATELIÊ GEANE CLIZ
    ========================================= */
@@ -377,11 +373,52 @@ h2 {
     opacity: 0.07;
     pointer-events: none;
     z-index: 0;
+    animation: flutuarBolha 14s ease-in-out infinite;
 }
-.bubble.b1 { width: 520px; height: 520px; left: -220px; top: -140px; }
-.bubble.b2 { width: 380px; height: 380px; right: -170px; top: 560px; }
-.bubble.b3 { width: 460px; height: 460px; left: -200px; top: 1500px; }
-.bubble.b4 { width: 340px; height: 340px; right: -140px; top: 2300px; }
+
+/* Defina tempos ou delays ligeiramente diferentes para cada bolha ganhar movimento orgânico */
+.bubble.b1 {
+    width: 520px;
+    height: 520px;
+    left: -220px;
+    top: -140px;
+    animation-duration: 16s;
+}
+.bubble.b2 {
+    width: 380px;
+    height: 380px;
+    right: -170px;
+    top: 560px;
+    animation-duration: 12s;
+    animation-delay: -2s;
+}
+.bubble.b3 {
+    width: 460px;
+    height: 460px;
+    left: -200px;
+    top: 1500px;
+    animation-duration: 18s;
+    animation-delay: -4s;
+}
+.bubble.b4 {
+    width: 340px;
+    height: 340px;
+    right: -140px;
+    top: 2300px;
+    animation-duration: 13s;
+    animation-delay: -1s;
+}
+
+/* Keyframes da flutuação suave */
+@keyframes flutuarBolha {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(15px, -20px) scale(1.03);
+    }
+}
 
 .dots-decoration {
     position: absolute;
@@ -396,7 +433,10 @@ h2 {
     opacity: 0.35;
 }
 
-.about-hero, .essence-section, .process-section, .behind-scenes {
+.about-hero,
+.essence-section,
+.process-section,
+.behind-scenes {
     position: relative;
     z-index: 1;
 }
@@ -408,7 +448,7 @@ h2 {
 }
 .about-hero-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1.2fr 1fr;
     gap: 50px;
     align-items: center;
 }
@@ -423,7 +463,7 @@ h2 {
     color: var(--medio);
 }
 .signature {
-    font-family: 'Dancing Script', cursive;
+    font-family: "Dancing Script", cursive;
     font-size: 28px;
     color: var(--vinho);
     margin-top: 14px;
@@ -465,13 +505,15 @@ h2 {
     top: -16px;
     width: 322px;
     height: 422px;
-    border: 2px dashed var(--terracota);
+    border: 2px dashed var(--bege);
     border-radius: 48% 52% 46% 54% / 42% 46% 54% 58%;
     animation: rotateStitch 40s linear infinite;
     pointer-events: none;
 }
 @keyframes rotateStitch {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 .bubble-photo {
     position: absolute;
@@ -481,7 +523,7 @@ h2 {
     height: 160px;
     border-radius: 50%;
     overflow: hidden;
-    border: 6px solid var(--fundo);
+    border: dashed 2px var(--cafe);
     background: var(--bege);
     box-shadow: 0 10px 25px rgba(62, 20, 2, 0.12);
 }
@@ -516,17 +558,21 @@ h2 {
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
+
+/* Card com transição forçada para garantir a subida ao passar o mouse */
 .pillar-card {
     background: rgba(255, 255, 255, 0.55);
     border: 1px solid rgba(125, 71, 43, 0.25);
     border-radius: 16px;
     padding: 22px 18px;
-    transition: transform .3s ease, border-color .3s ease;
+    box-shadow: 0 4px 15px rgba(62, 20, 2, 0.04);
+    transition: transform 0.5s ease !important;
 }
 .pillar-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--terracota);
+    transform: translateY(-6px) !important;
+    box-shadow: 0 10px 25px rgba(62, 20, 2, 0.1);
 }
+
 .pillar-card i {
     font-size: 28px;
     color: var(--vinho);
@@ -594,7 +640,7 @@ h2 {
     color: var(--vinho);
     position: relative;
     z-index: 1;
-    transition: .3s;
+    transition: 0.3s;
 }
 .step-item:hover .step-number {
     background: var(--terracota);
@@ -643,7 +689,7 @@ h2 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform .5s ease;
+    transition: transform 0.5s ease;
 }
 .mosaic-item:hover img {
     transform: scale(1.06);
@@ -677,7 +723,8 @@ h2 {
 
 /* ---------- Responsivo ---------- */
 @media (max-width: 960px) {
-    .about-hero-grid, .essence-grid {
+    .about-hero-grid,
+    .essence-grid {
         grid-template-columns: 1fr;
     }
     .about-composition {
@@ -695,7 +742,8 @@ h2 {
     }
 }
 @media (max-width: 560px) {
-    .pillars-grid, .steps-grid {
+    .pillars-grid,
+    .steps-grid {
         grid-template-columns: 1fr;
     }
     .mosaic-grid {
@@ -708,9 +756,7 @@ h2 {
     }
 }
 @media (prefers-reduced-motion: reduce) {
-    .stitch-ring { animation: none; }
+    .stitch-ring {
+        animation: none;
+    }
 }
-
-
-
-

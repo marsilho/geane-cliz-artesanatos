@@ -10,7 +10,18 @@
                 <p>Peças artesanais feitas com carinho, para lares cheios de vida e histórias.</p>
             </div>
 
-            {{-- Coluna 2: Produtos (Opcional, se quiser manter) --}}
+            {{-- Coluna 2: Navegação --}}
+            <div>
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
+                    <li><a href="{{ url('/#produtos') }}">Produtos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+
+            {{-- Coluna 3: Produtos --}}
             <div>
                 <h4>Produtos</h4>
                 <ul>
@@ -21,7 +32,7 @@
                 </ul>
             </div>
 
-            {{-- Coluna 3: Contato e Redes Sociais --}}
+            {{-- Coluna 4: Contato e Redes Sociais --}}
             <div>
                 <h4>Contato</h4>
                 <ul>
