@@ -1,0 +1,427 @@
+/* =========================================
+   PÁGINA SOBRE — ATELIÊ GEANE CLIZ
+   ========================================= */
+
+.page-wrapper {
+    position: relative;
+    overflow-x: clip;
+}
+
+/* Bolhas contínuas e texturas de fundo */
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--medio);
+    opacity: 0.07;
+    pointer-events: none;
+    z-index: 0;
+    animation: flutuarBolha 14s ease-in-out infinite;
+}
+
+/* Defina tempos ou delays ligeiramente diferentes para cada bolha ganhar movimento orgânico */
+.bubble.b1 {
+    width: 520px;
+    height: 520px;
+    left: -220px;
+    top: -140px;
+    animation-duration: 16s;
+}
+.bubble.b2 {
+    width: 380px;
+    height: 380px;
+    right: -170px;
+    top: 560px;
+    animation-duration: 12s;
+    animation-delay: -2s;
+}
+.bubble.b3 {
+    width: 460px;
+    height: 460px;
+    left: -200px;
+    top: 1500px;
+    animation-duration: 18s;
+    animation-delay: -4s;
+}
+.bubble.b4 {
+    width: 340px;
+    height: 340px;
+    right: -140px;
+    top: 2300px;
+    animation-duration: 13s;
+    animation-delay: -1s;
+}
+
+/* Keyframes da flutuação suave */
+@keyframes flutuarBolha {
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(15px, -20px) scale(1.03);
+    }
+}
+
+.dots-decoration {
+    position: absolute;
+    right: 4%;
+    top: 150px;
+    width: 120px;
+    height: 120px;
+    z-index: 0;
+    pointer-events: none;
+    background-image: radial-gradient(var(--terracota) 2px, transparent 2px);
+    background-size: 20px 20px;
+    opacity: 0.35;
+}
+
+.about-hero,
+.essence-section,
+.process-section,
+.behind-scenes {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- 1. Mini-Hero (Sobe por trás do menu transparente) ---------- */
+.about-hero {
+    margin-top: -102px;
+    padding: 152px 0 90px;
+}
+.about-hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.about-hero-text h1 {
+    margin-bottom: 18px;
+    color: var(--cafe);
+}
+.about-hero-text p {
+    font-size: 14.5px;
+    font-weight: 300;
+    max-width: 470px;
+    color: var(--medio);
+}
+.signature {
+    font-family: "Dancing Script", cursive;
+    font-size: 28px;
+    color: var(--vinho);
+    margin-top: 14px;
+}
+
+/* Composição de imagens com anel giratório */
+.about-composition {
+    position: relative;
+    height: 430px;
+    max-width: 420px;
+    margin-left: auto;
+    width: 100%;
+}
+.main-frame {
+    position: absolute;
+    left: 30px;
+    top: 0;
+    width: 290px;
+    height: 390px;
+    background: var(--cafe);
+    border-radius: 48% 52% 46% 54% / 42% 46% 54% 58%;
+    padding: 14px;
+    box-shadow: 10px -8px 0 rgba(74, 46, 27, 0.15);
+}
+.frame-photo {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 46% 54% 44% 56% / 40% 44% 56% 60%;
+}
+.frame-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.stitch-ring {
+    position: absolute;
+    left: 14px;
+    top: -16px;
+    width: 322px;
+    height: 422px;
+    border: 2px dashed var(--bege);
+    border-radius: 48% 52% 46% 54% / 42% 46% 54% 58%;
+    animation: rotateStitch 40s linear infinite;
+    pointer-events: none;
+}
+@keyframes rotateStitch {
+    to {
+        transform: rotate(360deg);
+    }
+}
+.bubble-photo {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: dashed 2px var(--cafe);
+    background: var(--bege);
+    box-shadow: 0 10px 25px rgba(62, 20, 2, 0.12);
+}
+.bubble-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------- 2. Essência e Valores ---------- */
+.essence-section {
+    padding: 40px 0 90px;
+}
+.essence-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 56px;
+    align-items: start;
+}
+.essence-text h2 {
+    margin-bottom: 16px;
+    color: var(--cafe);
+}
+.essence-text p {
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 14px;
+    color: var(--medio);
+}
+.pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* Card com transição forçada para garantir a subida ao passar o mouse */
+.pillar-card {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(125, 71, 43, 0.25);
+    border-radius: 16px;
+    padding: 22px 18px;
+    box-shadow: 0 4px 15px rgba(62, 20, 2, 0.04);
+    transition: transform 0.5s ease !important;
+}
+.pillar-card:hover {
+    transform: translateY(-6px) !important;
+    box-shadow: 0 10px 25px rgba(62, 20, 2, 0.1);
+}
+
+.pillar-card i {
+    font-size: 28px;
+    color: var(--vinho);
+    margin-bottom: 8px;
+    display: block;
+}
+.pillar-card b {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--cafe);
+}
+.pillar-card small {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--medio);
+    line-height: 1.5;
+    display: block;
+}
+
+/* ---------- 3. Processo ---------- */
+.process-section {
+    padding: 40px 0 90px;
+    text-align: center;
+}
+.process-header {
+    max-width: 560px;
+    margin: 0 auto 50px;
+}
+.process-header p {
+    font-size: 14px;
+    font-weight: 300;
+    margin-top: 10px;
+    color: var(--medio);
+}
+.steps-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+.steps-grid::before {
+    content: "";
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    top: 29px;
+    border-top: 2px dashed rgba(125, 71, 43, 0.35);
+}
+.step-item {
+    position: relative;
+}
+.step-number {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--fundo);
+    border: 2px solid var(--terracota);
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--vinho);
+    position: relative;
+    z-index: 1;
+    transition: 0.3s;
+}
+.step-item:hover .step-number {
+    background: var(--terracota);
+    color: var(--fundo);
+}
+.step-item h3 {
+    font-size: 15.5px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: var(--cafe);
+}
+.step-item p {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--medio);
+    line-height: 1.55;
+}
+
+/* ---------- 4. Bastidores + CTA ---------- */
+/* ---------- 4. Bastidores + CTA ---------- */
+.behind-scenes {
+    padding: 30px 0 100px;
+}
+.scenes-header {
+    text-align: center;
+    margin-bottom: 36px;
+}
+.mosaic-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 170px;
+    gap: 14px;
+}
+.mosaic-item {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bege);
+}
+.mosaic-item.large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+.mosaic-item.wide {
+    grid-column: span 2;
+}
+.mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+.mosaic-item:hover img {
+    transform: scale(1.06);
+}
+
+.about-cta {
+    margin-top: 70px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.55);
+    border: 2px dashed rgba(125, 71, 43, 0.4);
+    border-radius: 22px;
+    padding: 44px 24px;
+}
+.about-cta h2 {
+    margin-bottom: 8px;
+    color: var(--cafe);
+}
+.about-cta p {
+    font-size: 14px;
+    font-weight: 300;
+    max-width: 480px;
+    margin: 0 auto 24px;
+    color: var(--medio);
+}
+.about-cta-buttons {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.about-cta-buttons .btn-principal,
+.about-cta-buttons .btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 960px) {
+    .about-hero-grid,
+    .essence-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-composition {
+        margin: 20px auto 0;
+    }
+    .steps-grid {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px;
+    }
+    .steps-grid::before {
+        display: none;
+    }
+    .mosaic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 560px) {
+    .pillars-grid,
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    .mosaic-grid {
+        grid-auto-rows: 140px;
+    }
+    .about-composition {
+        transform: scale(0.88);
+        transform-origin: top center;
+        height: 400px;
+    }
+    .about-cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+    .about-cta-buttons .btn-principal,
+    .about-cta-buttons .btn-secundario {
+        width: 100%;
+        max-width: 300px;
+        white-space: normal;
+        text-align: center;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .stitch-ring {
+        animation: none;
+    }
+}

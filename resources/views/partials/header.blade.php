@@ -7,21 +7,14 @@
         </a>
 
         <!-- Botão Menu Mobile -->
-        <button class="btn-menu" aria-label="Abrir menu">☰</button>
+        <button type="button" class="btn-menu" aria-label="Abrir menu">☰</button>
 
         <!-- Menu de Navegação -->
         <nav class="nav-menu">
-            @if(request()->routeIs('site.sobre'))
-            <a href="{{ url('/') }}">Home</a>
-            <a href="{{ route('site.sobre') }}" class="ativo">Sobre</a>
-            <a href="{{ url('/#produtos') }}">Produtos</a>
+            <a href="{{ url('/') }}" class="{{ request()->routeIs('site.home') || request()->is('/') ? 'ativo' : '' }}">Home</a>
+            <a href="{{ route('site.sobre') }}" class="{{ request()->routeIs('site.sobre') ? 'ativo' : '' }}">Sobre</a>
+            <a href="{{ route('site.produtos') }}" class="{{ request()->routeIs('site.produtos') ? 'ativo' : '' }}">Produtos</a>
             <a href="{{ url('/#contato') }}">Contato</a>
-            @else
-            <a href="{{ url('/') }}" class="ativo">Home</a>
-            <a href="{{ route('site.sobre') }}">Sobre</a>
-            <a href="{{ url('/#produtos') }}">Produtos</a>
-            <a href="{{ url('/#contato') }}">Contato</a>
-            @endif
         </nav>
     </div>
 </header>

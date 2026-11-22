@@ -13,9 +13,9 @@ Route::get('/', function () {
     return view('site.home.home');
 })->name('site.home');
 
-// Página de Produtos
+// Página de Produtos (ex: /produtos ou /produtos?categoria=bordados)
 Route::get('/produtos', function () {
-    return view('site.home.produtos');
+    return view('site.produtos.produtos');
 })->name('site.produtos');
 
 // Página Sobre Nós
