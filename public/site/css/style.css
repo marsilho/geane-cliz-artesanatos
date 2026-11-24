@@ -7,6 +7,7 @@
    Ateliê Geane Cliz — style.css
    Paleta: fundo #F8F1EB | bege #D9BBA9 | terracota #C36A08
            vinho #8E3309 | médio #7D472B | café #3E1402
+           Tipografia: principal Poppins | textos Nunito
    ========================================================= */
 :root {
     --fundo: #f8f1eb;
@@ -16,6 +17,8 @@
     --medio: #7d472b;
     --cafe: #3e1402;
     --container: 1100px;
+    --fonte-principal: "Poppins", sans-serif;
+    --fonte-texto: "Nunito", sans-serif;
 }
 * {
     box-sizing: border-box;

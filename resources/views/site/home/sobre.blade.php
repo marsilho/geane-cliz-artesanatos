@@ -12,10 +12,10 @@
             </p>
 
             <ul class="checks">
-                <li data-aos="fade-up" data-aos-delay="350" data-aos-duration="600">Materiais selecionados e de alta qualidade</li>
-                <li data-aos="fade-up" data-aos-delay="450" data-aos-duration="600">Atendimento carinhoso e personalizado</li>
-                <li data-aos="fade-up" data-aos-delay="550" data-aos-duration="600">Processo 100% artesanal e exclusivo</li>
-                <li data-aos="fade-up" data-aos-delay="650" data-aos-duration="600">Cuidado em cada ponto e acabamento</li>
+                <li data-aos="fade-up" data-aos-delay="350" data-aos-duration="600">Materiais selecionados e de alta qualidade.</li>
+                <li data-aos="fade-up" data-aos-delay="450" data-aos-duration="600">Atendimento carinhoso e personalizado.</li>
+                <li data-aos="fade-up" data-aos-delay="550" data-aos-duration="600">Processo 100% artesanal e exclusivo.</li>
+                <li data-aos="fade-up" data-aos-delay="650" data-aos-duration="600">Cuidado em cada ponto e acabamento.</li>
             </ul>
         </div>
 

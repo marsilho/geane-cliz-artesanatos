@@ -17,17 +17,9 @@
             <div class="banner-botoes" data-aos="fade-up" data-aos-delay="450" data-aos-duration="800">
                 <a href="#produtos" class="btn btn-principal btn-animado">
                     <span>Produtos</span>
-                    <svg class="icone-seta" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
                 </a>
                 <a href="#contato" class="btn btn-secundario">
                     <span>Contate-nos</span>
-                    <svg class="icone-seta" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
                 </a>
             </div>
         </div>

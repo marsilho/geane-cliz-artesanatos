@@ -1,18 +1,20 @@
 /* =========================================
-   BANNER PRINCIPAL — ATELIÊ GEANE CLIZ
+   HOME — ATELIÊ GEANE CLIZ
    ========================================= */
 
-/* Transição em Onda do Banner + Integração Fluida com o Header */
+/* =========================================
+1. BANNER PRINCIPAL
+   ========================================= */
+
 .banner-hero {
     background-color: var(--fundo);
-    margin-top: -102px; /* Puxa o banner para trás da altura exata do .site-header */
-    padding: 167px 0 190px; /* Compensa os 102px para manter o alinhamento do conteúdo */
+    margin-top: -102px;
+    padding: 167px 0 190px;
     position: relative;
-    overflow: visible; /* Permite que os elementos ultrapassem a linha do menu sem corte */
+    overflow: visible;
     z-index: 1;
 }
 
-/* Detalhe de fundo 1: Bolha orgânica suave atravessando o canto superior esquerdo do menu */
 .banner-hero::before {
     content: "";
     position: absolute;
@@ -28,7 +30,6 @@
     animation: flutuarFundoBanner 12s ease-in-out infinite;
 }
 
-/* Detalhe de fundo 2: Pontinhos artesanais sutis próximos aos links do menu */
 .banner-hero::after {
     content: "";
     position: absolute;
@@ -86,22 +87,32 @@
 }
 
 /* LADO ESQUERDO: TEXTOS */
-
 .banner-conteudo {
     flex: 1;
     max-width: 480px;
 }
 
-.tag-destaque {
+/* Padrão único para títulos/tags curtas ("Criando", "Sobre nós", "Conheça", etc.) em Poppins */
+.tag-destaque,
+.sobre .eyebrow,
+.produtos-cabecalho .eyebrow,
+.experiencia-texto .eyebrow,
+.eyebrow {
     display: inline-block;
-    font-size: 16px;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
     color: var(--terracota);
-    font-weight: 500;
-    border-bottom: 2px solid var(--terracota);
+    border: none;
+    border-bottom: 1.5px dashed rgba(195, 106, 8, 0.72);
+    padding-bottom: 4px;
     margin-bottom: 14px;
 }
 
 .titulo-banner {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-size: clamp(34px, 3.2vw, 42px);
     color: var(--cafe);
     line-height: 1.18;
@@ -110,127 +121,101 @@
 }
 
 .descricao-banner {
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
     font-size: 16px;
+    font-weight: 400;
     color: var(--medio);
-    line-height: 1.7;
+    line-height: 1.74;
+    letter-spacing: 0.01em;
+    max-width: 46ch;
     margin-bottom: 30px;
 }
 
-/* BOTÕES */
-.banner-botoes .btn {
-    padding: 10px 50px;
-    font-size: 15px;
-    font-weight: 500;
-    display: inline-block;
-    transition: all 0.3s ease;
+/* BOTÕES GERAIS E DO BANNER (POPPINS) */
+.btn,
+.btn-principal,
+.btn-secundario {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
 }
 
-/* === BOTÃO PRINCIPAL COM ANIMAÇÃO === */
-.btn-principal {
-    position: relative;
+.banner-botoes,
+.experiencia-acoes {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.banner-botoes .btn,
+.banner-botoes .btn-principal,
+.banner-botoes .btn-secundario,
+.experiencia-acoes .btn,
+.experiencia-acoes .btn-principal,
+.experiencia-acoes .btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 36px;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    border-radius: 0;
+    text-decoration: none;
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.banner-botoes .btn::before,
+.banner-botoes .btn::after,
+.banner-botoes .btn-principal::before,
+.banner-botoes .btn-principal::after,
+.banner-botoes .btn-secundario::before,
+.banner-botoes .btn-secundario::after,
+.experiencia-acoes .btn::before,
+.experiencia-acoes .btn::after,
+.experiencia-acoes .btn-principal::before,
+.experiencia-acoes .btn-principal::after,
+.experiencia-acoes .btn-secundario::before,
+.experiencia-acoes .btn-secundario::after {
+    content: none;
+    display: none;
+}
+
+.banner-botoes .btn-principal,
+.experiencia-acoes .btn-principal {
     color: var(--fundo);
     background-color: var(--medio);
     border: 1px solid var(--medio);
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    z-index: 1;
-    transition:
-        color 0.4s ease,
-        border-color 0.4s ease;
 }
 
-.btn-principal::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
+.banner-botoes .btn-principal:hover,
+.experiencia-acoes .btn-principal:hover {
     background-color: var(--cafe);
-    z-index: -1;
-    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.btn-principal .icone-seta {
-    width: 0;
-    opacity: 0;
-    margin-left: 0;
-    transform: translateX(-10px);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.btn-principal:hover::before {
-    width: 100%;
-}
-
-.btn-principal:hover {
-    border-color: var(--medio);
-}
-
-.btn-principal:hover .icone-seta {
-    width: 18px;
-    opacity: 1;
-    margin-left: 8px;
-    transform: translateX(0);
-}
-
-/* === BOTÃO SECUNDÁRIO COM A MESMA ANIMAÇÃO === */
-.btn-secundario {
-    position: relative;
-    color: var(--cafe);
-    border: 1px solid var(--cafe);
-    display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    z-index: 1;
-    transition:
-        color 0.4s ease,
-        border-color 0.4s ease;
-}
-
-.btn-secundario::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: var(--cafe);
-    z-index: -1;
-    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.btn-secundario .icone-seta {
-    width: 0;
-    opacity: 0;
-    margin-left: 0;
-    transform: translateX(-10px);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.btn-secundario:hover::before {
-    width: 100%;
-}
-
-.btn-secundario:hover {
     border-color: var(--cafe);
     color: var(--fundo);
+    box-shadow: 0 14px 30px rgba(62, 20, 2, 0.18);
 }
 
-.btn-secundario:hover .icone-seta {
-    width: 18px;
-    opacity: 1;
-    margin-left: 8px;
-    transform: translateX(0);
+.banner-botoes .btn-secundario,
+.experiencia-acoes .btn-secundario {
+    color: var(--cafe);
+    background-color: transparent;
+    border: 1px solid var(--cafe);
 }
 
-/* =========================================
-   LADO DIREITO: COMPOSIÇÃO DAS IMAGENS
-   ========================================= */
+.banner-botoes .btn-secundario:hover,
+.experiencia-acoes .btn-secundario:hover {
+    background-color: var(--cafe);
+    border-color: var(--cafe);
+    color: var(--fundo);
+    box-shadow: 0 14px 30px rgba(62, 20, 2, 0.18);
+}
 
+/* LADO DIREITO: COMPOSIÇÃO DAS IMAGENS */
 .banner-imagens {
     position: relative;
     flex: 0 0 520px;
@@ -238,7 +223,6 @@
     height: 460px;
 }
 
-/* Detalhe de costura tracejada decorativa em volta da composição */
 .banner-imagens::before {
     content: "";
     position: absolute;
@@ -262,8 +246,6 @@
     }
 }
 
-/* ESTILO BASE DAS BOLHAS */
-
 .bolha {
     position: absolute;
     overflow: hidden;
@@ -272,8 +254,6 @@
     background: transparent;
     box-shadow: 0 10px 25px rgba(62, 20, 2, 0.12);
 }
-
-/* IMAGENS */
 
 .img-hero {
     position: absolute;
@@ -287,14 +267,10 @@
     outline: none;
 }
 
-/* =========================================
-   1. IMAGEM PRINCIPAL (COM MOVIMENTO ORGÂNICO)
-   ========================================= */
-
 .bolha-principal {
     width: 495px;
     height: 415px;
-    top: 0px;
+    top: 0;
     left: 15px;
     z-index: 1;
     background-color: var(--cafe);
@@ -326,10 +302,6 @@
     border-radius: inherit;
 }
 
-/* =========================================
-   2. BONECA ANTONIETA
-   ========================================= */
-
 .bolha-antonieta {
     width: 165px;
     height: 165px;
@@ -340,10 +312,6 @@
     border: dashed 2px var(--cafe);
     background: var(--bege);
 }
-
-/* =========================================
-   3. BABADORES
-   ========================================= */
 
 .bolha-babadores {
     width: 165px;
@@ -356,10 +324,6 @@
     background: var(--bege);
 }
 
-/* =========================================
-   4. MANTA ROXA
-   ========================================= */
-
 .bolha-manta-roxa {
     width: 165px;
     height: 165px;
@@ -370,10 +334,6 @@
     border: dashed 2px var(--cafe);
     background: var(--bege);
 }
-
-/* =========================================
-   RESPONSIVIDADE
-   ========================================= */
 
 @media (max-width: 1050px) {
     .banner-container {
@@ -393,7 +353,7 @@
 
 @media (max-width: 900px) {
     .banner-hero {
-        padding: 162px 0 80px; /* Mantém a compensação dos 102px do header */
+        padding: 162px 0 80px;
     }
 
     .banner-container {
@@ -404,6 +364,11 @@
 
     .banner-conteudo {
         max-width: 550px;
+    }
+
+    .descricao-banner {
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .banner-botoes {
@@ -421,7 +386,7 @@
 
 @media (max-width: 600px) {
     .banner-hero {
-        padding: 147px 0 65px; /* Mantém a compensação dos 102px do header */
+        padding: 147px 0 65px;
     }
 
     .titulo-banner {
@@ -429,7 +394,7 @@
     }
 
     .descricao-banner {
-        font-size: 14px;
+        font-size: 14.5px;
     }
 
     .banner-imagens {
@@ -453,24 +418,25 @@
         margin-bottom: -145px;
     }
 
-    .banner-botoes .btn {
+    .banner-botoes .btn,
+    .banner-botoes .btn-principal,
+    .banner-botoes .btn-secundario {
         padding: 11px 22px;
     }
 }
 
 /* =========================================
-   SOBRE — ATELIÊ GEANE CLIZ
+2. SOBRE — ATELIÊ GEANE CLIZ
    ========================================= */
 
 .sobre {
     position: relative;
-    padding: 50px 0 50px;
+    padding: 50px 0;
     background-color: var(--fundo);
     z-index: 2;
-    overflow: visible; /* Permite que as bolhas ultrapassem a borda da seção */
+    overflow: visible;
 }
 
-/* Bolha decorativa 1: canto inferior direito */
 .sobre::after {
     content: "";
     position: absolute;
@@ -481,12 +447,11 @@
     border-radius: 46% 54% 62% 38% / 42% 48% 52% 58%;
     background-color: var(--medio);
     opacity: 0.08;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
     animation: flutuarBolha 11s ease-in-out infinite;
 }
 
-/* Bolha decorativa 2: canto superior esquerdo */
 .sobre::before {
     content: "";
     position: absolute;
@@ -497,7 +462,7 @@
     border-radius: 54% 46% 38% 62% / 49% 58% 42% 51%;
     background-color: var(--medio);
     opacity: 0.07;
-    z-index: -1;
+    z-index: 0;
     pointer-events: none;
     animation: flutuarBolhaInversa 13s ease-in-out infinite;
 }
@@ -524,7 +489,7 @@
 
 .sobre-grid {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1.1fr 1fr;
     gap: 50px;
@@ -532,6 +497,7 @@
 }
 
 .sobre h2 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     color: var(--cafe);
     font-size: clamp(28px, 2.5vw, 36px);
     line-height: 1.2;
@@ -540,51 +506,76 @@
 }
 
 .sobre p {
-    font-size: 14px;
-    color: var(--medio);
-    line-height: 1.7;
-    margin-bottom: 30px;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 15px;
     font-weight: 400;
-    max-width: 520px;
+    color: var(--medio);
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    margin-bottom: 30px;
+    max-width: 54ch;
+    text-shadow: 0 1px 2px rgba(62, 20, 2, 0.06);
 }
 
+/* Filete lateral fluido, fundo bege suave e subida sutil no hover */
 .checks {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 14px;
     list-style: none;
     padding: 0;
-    margin-top: 28px;
+    margin-top: 26px;
 }
 
 .checks li {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px 14px;
-    background-color: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(139, 94, 60, 0.18);
-    border-radius: 10px;
-    font-size: 13.5px;
-    line-height: 1.4;
-    color: var(--cafe);
+    padding: 12px 15px 12px 16px;
+    background-color: rgba(245, 236, 224, 0.5);
+    border-left: 3px solid rgba(139, 94, 60, 0.28);
+    border-radius: 0 10px 10px 0;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 14px;
     font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.008em;
+    color: var(--cafe);
+    transform: translate3d(0, 0, 0);
+    transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .checks li::before {
     content: "";
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -3px;
+    width: 3px;
     background-color: var(--medio);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
-    background-size: 13px;
-    background-repeat: no-repeat;
-    background-position: center;
+    opacity: 0;
+    transform: scaleY(0.65);
+    transform-origin: center;
+    transition:
+        opacity 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Fotos da Seção Sobre */
+.checks li:hover {
+    transform: translate3d(0, -2px, 0);
+    background-color: rgba(245, 236, 224, 0.86);
+    box-shadow: 0 8px 18px rgba(62, 20, 2, 0.06);
+}
+
+.checks li:hover::before {
+    opacity: 1;
+    transform: scaleY(1);
+}
+
 .sobre-photos {
     display: grid;
     grid-template-columns: 1fr 1.15fr;
@@ -597,6 +588,15 @@
     overflow: hidden;
     display: flex;
     justify-content: center;
+    box-shadow: 0 8px 22px rgba(62, 20, 2, 0.06);
+    transition:
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.32s ease;
+}
+
+.sobre-photo:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px rgba(62, 20, 2, 0.1);
 }
 
 @media (max-width: 600px) {
@@ -620,7 +620,7 @@
 }
 
 /* =========================================
-   PRODUTOS — ATELIÊ GEANE CLIZ
+3. PRODUTOS — ATELIÊ GEANE CLIZ
    ========================================= */
 
 .produtos {
@@ -631,7 +631,6 @@
     z-index: 1;
 }
 
-/* Apenas 1 bolha suave na esquerda de Produtos (sem colidir com a Experiência na direita) */
 .produtos::before {
     content: "";
     position: absolute;
@@ -647,7 +646,6 @@
     animation: flutuarBolhaInversa 13s ease-in-out infinite;
 }
 
-/* Remove o ::after para não colidir com a bolha da seção Experiência abaixo */
 .produtos::after {
     display: none;
 }
@@ -659,27 +657,29 @@
 
 .produtos-cabecalho {
     text-align: center;
-    padding-top: clamp(30px, 5vw, 60px);
-    margin-bottom: 40px;
+    padding-top: clamp(42px, 5.5vw, 72px);
+    margin-bottom: 24px;
 }
 
 .produtos-cabecalho .eyebrow {
-    color: var(--terracota);
-    border-color: var(--vinho);
+    margin-bottom: 6px;
 }
 
-/* Grid principal de 4 colunas com linhas de altura uniforme */
+.produtos-cabecalho h2 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    margin-top: 0;
+}
+
 .produtos-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 310px; /* Garante que a 1ª e a 2ª linha tenham exatamente a mesma altura */
+    grid-auto-rows: 310px;
     gap: 20px;
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Estilo base do item */
 .produto-item {
     position: relative;
     width: 100%;
@@ -713,7 +713,6 @@
     box-shadow: 0 14px 30px rgba(62, 20, 2, 0.18);
 }
 
-/* Aba de Informações */
 .produto-info {
     position: absolute;
     bottom: 0;
@@ -734,6 +733,7 @@
 }
 
 .produto-nome {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-size: 14.5px;
     font-weight: 600;
     color: #3e1402;
@@ -741,12 +741,14 @@
 }
 
 .produto-preco {
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
     color: #a85234;
 }
 
-/* Distribuição assimétrica das colunas (Linha 1: 1+1+2 | Linha 2: 2+1+1) */
 .produto-item:nth-child(1),
 .produto-item:nth-child(2),
 .produto-item:nth-child(5),
@@ -764,7 +766,6 @@
     margin-top: 40px;
 }
 
-/* Responsivo para Tablets */
 @media (max-width: 768px) {
     .produtos-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -789,7 +790,6 @@
     }
 }
 
-/* Responsivo para Telemóveis */
 @media (max-width: 480px) {
     .produtos-grid {
         grid-template-columns: 1fr;
@@ -807,18 +807,17 @@
 }
 
 /* =========================================
-   EXPERIENCIA — ATELIÊ GEANE CLIZ
+4. EXPERIÊNCIA — ATELIÊ GEANE CLIZ
    ========================================= */
 
 .experiencia {
     position: relative;
     padding: 90px 0;
     background-color: var(--fundo);
-    overflow: visible; /* Evita cortes nas bordas da seção */
+    overflow: visible;
     z-index: 1;
 }
 
-/* Bolha decorativa suave no lado direito (alternando com a bolha esquerda de Produtos) */
 .experiencia::after {
     content: "";
     position: absolute;
@@ -834,17 +833,6 @@
     animation: flutuarBolha 12s ease-in-out infinite;
 }
 
-@keyframes flutuarBolha {
-    0%,
-    100% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-    }
-    50% {
-        transform: translate(-15px, 15px) rotate(7deg) scale(1.04);
-    }
-}
-
-/* Garante que o conteúdo da grelha fique sempre clicável acima da bolha */
 .experiencia .container {
     position: relative;
     z-index: 2;
@@ -867,6 +855,7 @@
     border-radius: 18px;
     overflow: hidden;
     background: var(--bege);
+    box-shadow: 0 8px 22px rgba(62, 20, 2, 0.06);
 }
 
 .experiencia-foto img {
@@ -891,66 +880,86 @@
     border: 6px solid var(--fundo);
 }
 
-.experiencia-texto h2 span {
+.experiencia-texto h2 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    color: var(--cafe);
+    font-size: clamp(28px, 2.5vw, 36px);
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.experiencia-texto h2 span,
+.experiencia-texto h2 .destaque-anos {
     color: var(--terracota);
 }
 
-.experiencia-texto > p {
-    font-size: 14px;
+.contador-anos {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+}
+
+.experiencia-texto p {
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 14.5px;
     color: var(--medio);
-    line-height: 1.7;
+    line-height: 1.74;
+    letter-spacing: 0.01em;
     margin: 12px 0 24px;
     font-weight: 400;
-    max-width: 560px;
+    max-width: 56ch;
 }
 
 .diferenciais {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
+    gap: 14px;
     margin-bottom: 26px;
     max-width: 560px;
 }
 
 .diferencial {
-    background: var(--bege);
-    border-radius: 14px;
-    padding: 16px 12px;
+    background: rgba(245, 236, 224, 0.72);
+    border: 1px solid rgba(150, 90, 60, 0.14);
+    border-radius: 16px;
+    padding: 18px 14px;
     text-align: center;
-    transition: transform 0.3s ease;
+    transform: translate3d(0, 0, 0);
+    box-shadow: 0 4px 14px rgba(62, 20, 2, 0.03);
+    transition:
+        transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .diferencial:hover {
-    transform: translateY(-4px);
+    transform: translate3d(0, -3px, 0);
+    box-shadow: 0 10px 22px rgba(62, 20, 2, 0.07);
 }
 
 .diferencial i {
     display: block;
-    font-size: 24px;
+    font-size: 23px;
     color: var(--vinho);
-    margin-bottom: 6px;
+    margin-bottom: 7px;
 }
 
 .diferencial b {
     display: block;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-size: 13.5px;
     font-weight: 500;
     line-height: 1.3;
+    color: var(--cafe);
 }
 
 .diferencial small {
     display: block;
-    font-size: 11.5px;
-    font-weight: 300;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 12.5px;
+    font-weight: 400;
     color: var(--medio);
-    line-height: 1.4;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
     margin-top: 3px;
-}
-
-.experiencia-acoes {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
 }
 
 .assinatura {
@@ -960,7 +969,6 @@
     color: var(--vinho);
 }
 
-/* Responsivo */
 @media (max-width: 768px) {
     .experiencia-grid {
         grid-template-columns: 1fr;
@@ -973,9 +981,69 @@
         margin: 0 auto;
     }
 
+    .diferenciais {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .experiencia-acoes {
+        justify-content: flex-start;
+    }
+
     .experiencia::after {
         width: 240px;
         height: 240px;
         right: -60px;
+    }
+}
+
+/* =========================================
+5. ACESSIBILIDADE / REDUÇÃO DE MOVIMENTO
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .banner-hero::before,
+    .banner-imagens::before,
+    .bolha-principal,
+    .sobre::after,
+    .sobre::before,
+    .produtos::before,
+    .experiencia::after {
+        animation: none;
+    }
+
+    .checks li,
+    .checks li::before,
+    .sobre-photo,
+    .produto-item,
+    .produto-item img,
+    .produto-info,
+    .diferencial,
+    .btn,
+    .btn-principal,
+    .btn-secundario,
+    .banner-botoes .btn,
+    .banner-botoes .btn-principal,
+    .banner-botoes .btn-secundario,
+    .experiencia-acoes .btn,
+    .experiencia-acoes .btn-principal,
+    .experiencia-acoes .btn-secundario {
+        transition: none;
+    }
+
+    .checks li:hover,
+    .sobre-photo:hover,
+    .produto-item:hover,
+    .diferencial:hover,
+    .btn-principal:hover,
+    .btn-secundario:hover,
+    .banner-botoes .btn:hover,
+    .banner-botoes .btn-principal:hover,
+    .banner-botoes .btn-secundario:hover,
+    .experiencia-acoes .btn:hover,
+    .experiencia-acoes .btn-principal:hover,
+    .experiencia-acoes .btn-secundario:hover {
+        transform: none;
+        box-shadow: none;
     }
 }

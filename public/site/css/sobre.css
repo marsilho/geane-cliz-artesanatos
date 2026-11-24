@@ -15,10 +15,9 @@
     opacity: 0.07;
     pointer-events: none;
     z-index: 0;
-    animation: flutuarBolha 14s ease-in-out infinite;
+    animation: flutuarBolhaSobre 14s ease-in-out infinite;
 }
 
-/* Defina tempos ou delays ligeiramente diferentes para cada bolha ganhar movimento orgânico */
 .bubble.b1 {
     width: 520px;
     height: 520px;
@@ -26,6 +25,7 @@
     top: -140px;
     animation-duration: 16s;
 }
+
 .bubble.b2 {
     width: 380px;
     height: 380px;
@@ -34,6 +34,7 @@
     animation-duration: 12s;
     animation-delay: -2s;
 }
+
 .bubble.b3 {
     width: 460px;
     height: 460px;
@@ -42,6 +43,7 @@
     animation-duration: 18s;
     animation-delay: -4s;
 }
+
 .bubble.b4 {
     width: 340px;
     height: 340px;
@@ -51,8 +53,7 @@
     animation-delay: -1s;
 }
 
-/* Keyframes da flutuação suave */
-@keyframes flutuarBolha {
+@keyframes flutuarBolhaSobre {
     0%,
     100% {
         transform: translate(0, 0) scale(1);
@@ -83,32 +84,60 @@
     z-index: 1;
 }
 
+/* Padrão do título menor / eyebrow na página Sobre:
+   mantém a fonte do título menor e aplica o traço tracejado igual à Home */
+.about-hero .eyebrow,
+.about-hero .tag-destaque,
+.essence-section .eyebrow,
+.essence-section .tag-destaque,
+.process-section .eyebrow,
+.process-section .tag-destaque,
+.behind-scenes .eyebrow,
+.behind-scenes .tag-destaque,
+.page-wrapper .eyebrow {
+    display: inline-block;
+    color: var(--terracota);
+    border: none;
+    border-bottom: 1.5px dashed rgba(195, 106, 8, 0.72);
+    padding-bottom: 4px;
+    margin-bottom: 14px;
+}
+
 /* ---------- 1. Mini-Hero (Sobe por trás do menu transparente) ---------- */
 .about-hero {
     margin-top: -102px;
     padding: 152px 0 90px;
 }
+
 .about-hero-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 50px;
     align-items: center;
 }
+
 .about-hero-text h1 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     margin-bottom: 18px;
     color: var(--cafe);
+    line-height: 1.18;
 }
+
 .about-hero-text p {
-    font-size: 14.5px;
-    font-weight: 300;
-    max-width: 470px;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    max-width: 48ch;
     color: var(--medio);
 }
+
 .signature {
     font-family: "Dancing Script", cursive;
     font-size: 28px;
     color: var(--vinho);
-    margin-top: 14px;
+    margin-top: 16px;
 }
 
 /* Composição de imagens com anel giratório */
@@ -119,6 +148,7 @@
     margin-left: auto;
     width: 100%;
 }
+
 .main-frame {
     position: absolute;
     left: 30px;
@@ -130,17 +160,20 @@
     padding: 14px;
     box-shadow: 10px -8px 0 rgba(74, 46, 27, 0.15);
 }
+
 .frame-photo {
     width: 100%;
     height: 100%;
     overflow: hidden;
     border-radius: 46% 54% 44% 56% / 40% 44% 56% 60%;
 }
+
 .frame-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
 .stitch-ring {
     position: absolute;
     left: 14px;
@@ -152,11 +185,13 @@
     animation: rotateStitch 40s linear infinite;
     pointer-events: none;
 }
+
 @keyframes rotateStitch {
     to {
         transform: rotate(360deg);
     }
 }
+
 .bubble-photo {
     position: absolute;
     right: 0;
@@ -168,7 +203,13 @@
     border: dashed 2px var(--cafe);
     background: var(--bege);
     box-shadow: 0 10px 25px rgba(62, 20, 2, 0.12);
+    transition: transform 0.3s ease;
 }
+
+.bubble-photo:hover {
+    transform: translateY(-3px);
+}
+
 .bubble-photo img {
     width: 100%;
     height: 100%;
@@ -179,60 +220,90 @@
 .essence-section {
     padding: 40px 0 90px;
 }
+
 .essence-grid {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 56px;
     align-items: start;
 }
+
 .essence-text h2 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     margin-bottom: 16px;
     color: var(--cafe);
+    line-height: 1.2;
 }
+
 .essence-text p {
-    font-size: 14px;
-    font-weight: 300;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+    max-width: 52ch;
     margin-bottom: 14px;
     color: var(--medio);
 }
+
 .pillars-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
 
-/* Card com transição forçada para garantir a subida ao passar o mouse */
 .pillar-card {
-    background: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(125, 71, 43, 0.25);
+    background: rgba(255, 255, 255, 0.58);
+    border: 1px solid rgba(139, 94, 60, 0.22);
     border-radius: 16px;
     padding: 22px 18px;
     box-shadow: 0 4px 15px rgba(62, 20, 2, 0.04);
-    transition: transform 0.5s ease !important;
+    transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
 }
+
 .pillar-card:hover {
-    transform: translateY(-6px) !important;
-    box-shadow: 0 10px 25px rgba(62, 20, 2, 0.1);
+    transform: translateY(-4px);
+    background-color: rgba(255, 255, 255, 0.88);
+    border-color: rgba(195, 106, 8, 0.36);
+    box-shadow: 0 10px 24px rgba(62, 20, 2, 0.08);
 }
 
 .pillar-card i {
     font-size: 28px;
     color: var(--vinho);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     display: block;
+    transition:
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.28s ease;
 }
+
+.pillar-card:hover i {
+    transform: scale(1.06) rotate(-3deg);
+    color: var(--terracota);
+}
+
 .pillar-card b {
     display: block;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-size: 15px;
     font-weight: 500;
-    margin-bottom: 4px;
+    line-height: 1.35;
+    margin-bottom: 5px;
     color: var(--cafe);
 }
+
 .pillar-card small {
-    font-size: 12.5px;
-    font-weight: 300;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
     color: var(--medio);
-    line-height: 1.5;
+    line-height: 1.55;
+    letter-spacing: 0.005em;
     display: block;
 }
 
@@ -241,22 +312,35 @@
     padding: 40px 0 90px;
     text-align: center;
 }
+
 .process-header {
     max-width: 560px;
     margin: 0 auto 50px;
 }
+
+.process-header h2 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    color: var(--cafe);
+    line-height: 1.2;
+}
+
 .process-header p {
-    font-size: 14px;
-    font-weight: 300;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.72;
+    letter-spacing: 0.01em;
     margin-top: 10px;
     color: var(--medio);
 }
+
 .steps-grid {
     position: relative;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 28px;
 }
+
 .steps-grid::before {
     content: "";
     position: absolute;
@@ -265,9 +349,11 @@
     top: 29px;
     border-top: 2px dashed rgba(125, 71, 43, 0.35);
 }
+
 .step-item {
     position: relative;
 }
+
 .step-number {
     width: 58px;
     height: 58px;
@@ -277,101 +363,217 @@
     border: 2px solid var(--terracota);
     display: grid;
     place-items: center;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-weight: 600;
     font-size: 17px;
     color: var(--vinho);
     position: relative;
     z-index: 1;
-    transition: 0.3s;
+    transition:
+        background-color 0.28s ease,
+        color 0.28s ease,
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .step-item:hover .step-number {
     background: var(--terracota);
     color: var(--fundo);
+    transform: translateY(-3px);
 }
+
 .step-item h3 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-size: 15.5px;
     font-weight: 500;
+    line-height: 1.35;
     margin-bottom: 6px;
     color: var(--cafe);
 }
+
 .step-item p {
-    font-size: 12.5px;
-    font-weight: 300;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
     color: var(--medio);
-    line-height: 1.55;
+    line-height: 1.6;
+    letter-spacing: 0.005em;
 }
 
-/* ---------- 4. Bastidores + CTA ---------- */
 /* ---------- 4. Bastidores + CTA ---------- */
 .behind-scenes {
     padding: 30px 0 100px;
 }
+
 .scenes-header {
     text-align: center;
     margin-bottom: 36px;
 }
+
+.scenes-header h2 {
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    color: var(--cafe);
+    line-height: 1.2;
+}
+
+.scenes-header p {
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 14.5px;
+    font-weight: 400;
+    line-height: 1.72;
+    letter-spacing: 0.01em;
+    color: var(--medio);
+    max-width: 52ch;
+    margin: 10px auto 0;
+}
+
 .mosaic-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 170px;
     gap: 14px;
 }
+
 .mosaic-item {
     border-radius: 16px;
     overflow: hidden;
     background: var(--bege);
+    box-shadow: 0 6px 18px rgba(62, 20, 2, 0.05);
 }
+
 .mosaic-item.large {
     grid-column: span 2;
     grid-row: span 2;
 }
+
 .mosaic-item.wide {
     grid-column: span 2;
 }
+
 .mosaic-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
 }
+
 .mosaic-item:hover img {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
+/* Caixa final com botões no mesmo estilo e animação da Home */
 .about-cta {
     margin-top: 70px;
     text-align: center;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.58);
     border: 2px dashed rgba(125, 71, 43, 0.4);
     border-radius: 22px;
     padding: 44px 24px;
 }
+
 .about-cta h2 {
-    margin-bottom: 8px;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    margin-bottom: 10px;
     color: var(--cafe);
+    line-height: 1.22;
 }
+
 .about-cta p {
-    font-size: 14px;
-    font-weight: 300;
-    max-width: 480px;
-    margin: 0 auto 24px;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.72;
+    letter-spacing: 0.01em;
+    max-width: 48ch;
+    margin: 0 auto 26px;
     color: var(--medio);
 }
+
 .about-cta-buttons {
     display: flex;
-    gap: 18px;
+    gap: 16px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
+
 .about-cta-buttons .btn-principal,
 .about-cta-buttons .btn-secundario {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 24px;
+    padding: 12px 34px;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
     line-height: 1.25;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
     white-space: nowrap;
+    transition:
+        color 0.4s ease,
+        border-color 0.4s ease,
+        padding 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.about-cta-buttons .btn-principal {
+    color: var(--fundo);
+    background-color: var(--medio);
+    border: 1px solid var(--medio);
+}
+
+.about-cta-buttons .btn-secundario {
+    color: var(--cafe);
+    background-color: transparent;
+    border: 1px solid var(--cafe);
+}
+
+.about-cta-buttons .btn-principal::before,
+.about-cta-buttons .btn-secundario::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--cafe);
+    z-index: -1;
+    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.about-cta-buttons .btn-principal::after,
+.about-cta-buttons .btn-secundario::after {
+    content: "→";
+    width: 0;
+    opacity: 0;
+    margin-left: 0;
+    transform: translateX(-10px);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.about-cta-buttons .btn-principal:hover::before,
+.about-cta-buttons .btn-secundario:hover::before {
+    width: 100%;
+}
+
+.about-cta-buttons .btn-principal:hover {
+    border-color: var(--medio);
+    padding-right: 28px;
+}
+
+.about-cta-buttons .btn-secundario:hover {
+    border-color: var(--cafe);
+    color: var(--fundo);
+    padding-right: 28px;
+}
+
+.about-cta-buttons .btn-principal:hover::after,
+.about-cta-buttons .btn-secundario:hover::after {
+    width: 18px;
+    opacity: 1;
+    margin-left: 8px;
+    transform: translateX(0);
 }
 
 /* ---------- Responsivo ---------- */
@@ -380,38 +582,47 @@
     .essence-grid {
         grid-template-columns: 1fr;
     }
+
     .about-composition {
         margin: 20px auto 0;
     }
+
     .steps-grid {
         grid-template-columns: 1fr 1fr;
         row-gap: 40px;
     }
+
     .steps-grid::before {
         display: none;
     }
+
     .mosaic-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
 @media (max-width: 560px) {
     .pillars-grid,
     .steps-grid {
         grid-template-columns: 1fr;
     }
+
     .mosaic-grid {
         grid-auto-rows: 140px;
     }
+
     .about-composition {
         transform: scale(0.88);
         transform-origin: top center;
         height: 400px;
     }
+
     .about-cta-buttons {
         flex-direction: column;
         gap: 12px;
         width: 100%;
     }
+
     .about-cta-buttons .btn-principal,
     .about-cta-buttons .btn-secundario {
         width: 100%;
@@ -420,8 +631,40 @@
         text-align: center;
     }
 }
+
 @media (prefers-reduced-motion: reduce) {
+    .bubble,
     .stitch-ring {
         animation: none;
+    }
+
+    .pillar-card,
+    .pillar-card i,
+    .step-number,
+    .mosaic-item img,
+    .bubble-photo,
+    .about-cta-buttons .btn-principal,
+    .about-cta-buttons .btn-secundario,
+    .about-cta-buttons .btn-principal::before,
+    .about-cta-buttons .btn-secundario::before,
+    .about-cta-buttons .btn-principal::after,
+    .about-cta-buttons .btn-secundario::after {
+        transition: none;
+    }
+
+    .pillar-card:hover,
+    .pillar-card:hover i,
+    .step-item:hover .step-number,
+    .mosaic-item:hover img,
+    .bubble-photo:hover {
+        transform: none;
+    }
+
+    .about-cta-buttons .btn-principal:hover::after,
+    .about-cta-buttons .btn-secundario:hover::after {
+        transform: none;
+        width: auto;
+        opacity: 1;
+        margin-left: 8px;
     }
 }
