@@ -29,8 +29,8 @@
 .bubble.b2 {
     width: 380px;
     height: 380px;
-    right: -170px;
-    top: 560px;
+    right: -160px;
+    top: 740px;
     animation-duration: 12s;
     animation-delay: -2s;
 }
@@ -77,6 +77,7 @@
 }
 
 .about-hero,
+.about-wave,
 .essence-section,
 .process-section,
 .behind-scenes {
@@ -106,7 +107,7 @@
 /* ---------- 1. Mini-Hero (Sobe por trás do menu transparente) ---------- */
 .about-hero {
     margin-top: -102px;
-    padding: 152px 0 90px;
+    padding: 152px 0 36px;
 }
 
 .about-hero-grid {
@@ -129,7 +130,7 @@
     font-weight: 400;
     line-height: 1.75;
     letter-spacing: 0.01em;
-    max-width: 48ch;
+    max-width: 65ch;
     color: var(--medio);
 }
 
@@ -216,95 +217,111 @@
     object-fit: cover;
 }
 
-/* ---------- 2. Essência e Valores ---------- */
+/* Divisória ondulada inspirada na transição da Home */
+.about-wave {
+    width: 100%;
+    line-height: 0;
+    overflow: hidden;
+    margin: 4px 0 8px;
+}
+
+.about-wave svg {
+    display: block;
+    width: 100%;
+    height: 230px;
+    /* opacity: 0.22; */
+}
+
+/* ---------- 2. Essência (Integrada diretamente ao fluxo da página) ---------- */
 .essence-section {
-    padding: 40px 0 90px;
+    padding: 40px 0 92px;
 }
 
-.essence-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 56px;
-    align-items: start;
+.essence-top {
+    max-width: 620px;
+    margin-bottom: 34px;
+    padding-bottom: 24px;
+    border-bottom: 1.5px dashed rgba(125, 71, 43, 0.25);
 }
 
-.essence-text h2 {
+.essence-top h2 {
     font-family: var(--fonte-principal), "Poppins", sans-serif;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     color: var(--cafe);
     line-height: 1.2;
 }
 
-.essence-text p {
+.essence-top p {
     font-family: var(--fonte-texto), "Nunito", sans-serif;
     font-size: 15px;
     font-weight: 400;
     line-height: 1.75;
     letter-spacing: 0.01em;
-    max-width: 52ch;
-    margin-bottom: 14px;
     color: var(--medio);
 }
 
-.pillars-grid {
+.essence-items-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 56px;
+}
+
+.essence-item {
+    display: flex;
+    align-items: flex-start;
     gap: 16px;
-}
-
-.pillar-card {
-    background: rgba(255, 255, 255, 0.58);
-    border: 1px solid rgba(139, 94, 60, 0.22);
-    border-radius: 16px;
-    padding: 22px 18px;
-    box-shadow: 0 4px 15px rgba(62, 20, 2, 0.04);
+    padding: 8px 6px 24px;
+    border-bottom: 1px dashed rgba(125, 71, 43, 0.22);
+    border-radius: 10px;
     transition:
-        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-        background-color 0.28s ease,
-        border-color 0.28s ease,
-        box-shadow 0.28s ease;
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.pillar-card:hover {
-    transform: translateY(-4px);
-    background-color: rgba(255, 255, 255, 0.88);
-    border-color: rgba(195, 106, 8, 0.36);
-    box-shadow: 0 10px 24px rgba(62, 20, 2, 0.08);
+.essence-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(62, 20, 2, 0.05);
 }
 
-.pillar-card i {
-    font-size: 28px;
+.essence-marker {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(217, 187, 169, 0.38);
     color: var(--vinho);
-    margin-bottom: 10px;
-    display: block;
+    display: grid;
+    place-items: center;
+    font-size: 19px;
     transition:
-        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-        color 0.28s ease;
+        background-color 0.28s ease,
+        color 0.28s ease,
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.pillar-card:hover i {
-    transform: scale(1.06) rotate(-3deg);
+.essence-item:hover .essence-marker {
+    background: rgba(195, 106, 8, 0.16);
     color: var(--terracota);
+    transform: translateY(-2px);
 }
 
-.pillar-card b {
-    display: block;
+.essence-item h3 {
     font-family: var(--fonte-principal), "Poppins", sans-serif;
-    font-size: 15px;
+    font-size: 15.5px;
     font-weight: 500;
     line-height: 1.35;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     color: var(--cafe);
 }
 
-.pillar-card small {
+.essence-item p {
     font-family: var(--fonte-texto), "Nunito", sans-serif;
-    font-size: 13px;
+    font-size: 13.5px;
     font-weight: 400;
-    color: var(--medio);
-    line-height: 1.55;
+    line-height: 1.65;
     letter-spacing: 0.005em;
-    display: block;
+    color: var(--medio);
+    max-width: 46ch;
 }
 
 /* ---------- 3. Processo ---------- */
@@ -579,7 +596,7 @@
 /* ---------- Responsivo ---------- */
 @media (max-width: 960px) {
     .about-hero-grid,
-    .essence-grid {
+    .essence-items-grid {
         grid-template-columns: 1fr;
     }
 
@@ -602,7 +619,10 @@
 }
 
 @media (max-width: 560px) {
-    .pillars-grid,
+    .about-wave svg {
+        height: 54px;
+    }
+
     .steps-grid {
         grid-template-columns: 1fr;
     }
@@ -638,8 +658,8 @@
         animation: none;
     }
 
-    .pillar-card,
-    .pillar-card i,
+    .essence-item,
+    .essence-marker,
     .step-number,
     .mosaic-item img,
     .bubble-photo,
@@ -652,8 +672,8 @@
         transition: none;
     }
 
-    .pillar-card:hover,
-    .pillar-card:hover i,
+    .essence-item:hover,
+    .essence-item:hover .essence-marker,
     .step-item:hover .step-number,
     .mosaic-item:hover img,
     .bubble-photo:hover {

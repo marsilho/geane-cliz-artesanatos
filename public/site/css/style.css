@@ -20,36 +20,41 @@
     --fonte-principal: "Poppins", sans-serif;
     --fonte-texto: "Nunito", sans-serif;
 }
-* {
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     background: var(--fundo);
     color: var(--cafe);
     line-height: 1.6;
     overflow-x: hidden;
 }
-/* Evita barra lateral sem cortar as bolhas entre as seções */
-/* main {
-    overflow-x: clip;
-} */
+
 img {
     max-width: 100%;
     display: block;
 }
+
 a {
     color: inherit;
     text-decoration: none;
 }
+
 ul {
     list-style: none;
 }
+
 .container {
     width: min(var(--container), 90%);
     margin: 0 auto;
@@ -66,19 +71,23 @@ ul {
     transition: all 0.25s ease;
     font-family: inherit;
 }
+
 .btn-primary {
     background: var(--medio);
     color: var(--fundo);
 }
+
 .btn-primary:hover {
     background: var(--cafe);
     border-color: var(--cafe);
 }
+
 .btn-outline {
     background: transparent;
     color: var(--cafe);
     border-color: var(--cafe);
 }
+
 .btn-outline:hover {
     background: var(--cafe);
     color: var(--fundo);
@@ -93,14 +102,17 @@ ul {
     margin-bottom: 10px;
     line-height: 1.3;
 }
+
 h1,
 h2 {
     font-weight: 500;
     line-height: 1.2;
 }
+
 h1 {
     font-size: clamp(28px, 4vw, 40px);
 }
+
 h2 {
     font-size: clamp(26px, 3.4vw, 34px);
 }
@@ -108,13 +120,12 @@ h2 {
 /* =========================================
    HEADER
    ========================================= */
-
 .site-header {
     padding: 20px 0;
     position: relative;
-    z-index: 10; /* Mantém logo e links sempre clicáveis acima dos detalhes do banner */
+    z-index: 10;
     background-color: transparent;
-    border-bottom: none; /* Remove a linha divisória reta */
+    border-bottom: none;
 }
 
 .header-container {
@@ -126,7 +137,6 @@ h2 {
     justify-content: space-between;
 }
 
-/* Estilo da Logo */
 .logo-img {
     height: 62px;
     width: 200px;
@@ -137,31 +147,43 @@ h2 {
 .nav-menu {
     display: flex;
     gap: 40px;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-size: 15px;
 }
 
 .nav-menu a {
     color: var(--cafe);
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-weight: 400;
     text-decoration: none;
     position: relative;
+    padding-bottom: 4px;
     transition: color 0.3s ease;
 }
 
-.nav-menu a:hover {
-    color: var(--terracota, #b2533e);
-}
-
-/* Linha indicadora no item ativo (ex: Home) */
-.nav-menu a.ativo::after {
+.nav-menu a::after {
     content: "";
     position: absolute;
-    bottom: -6px;
+    bottom: 1px;
     left: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 1px dashed var(--terracota);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-menu a:hover,
+.nav-menu a.ativo {
+    color: var(--terracota);
+}
+
+.nav-menu a.ativo {
+    font-weight: 500;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.ativo::after {
     width: 100%;
-    height: 1.5px;
-    background-color: var(--terracota, #b2533e);
-    border-radius: 2px;
 }
 
 /* Botão Menu Mobile */
@@ -171,7 +193,7 @@ h2 {
     border: none;
     font-size: 26px;
     cursor: pointer;
-    color: var(--cafe, #4a2e1b);
+    color: var(--cafe);
 }
 
 /* ---------- Responsivo para Telemóveis ---------- */
@@ -198,8 +220,6 @@ h2 {
     }
 }
 
-/* FIM HEADER */
-
 /* =========================================
    FOOTER
    ========================================= */
@@ -209,67 +229,134 @@ h2 {
     background: var(--fundo);
     margin-top: -1px;
 }
+
 .footer-wave svg {
     display: block;
     width: 100%;
     height: clamp(60px, 8vw, 120px);
 }
+
 .footer-logo-img {
-    height: 62px;
-    width: 200px;
+    height: 64px;
+    width: 205px;
     object-fit: contain;
 }
+
 .footer-wave path {
     fill: var(--cafe);
 }
+
 .footer {
     background: var(--cafe);
     color: var(--bege);
 }
+
 .footer-grid {
     display: grid;
     grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
-    gap: 40px;
-    padding: 30px 0 50px;
+    gap: 44px;
+    padding: 36px 0 54px;
 }
+
 .footer p {
-    font-size: 13px;
-    font-weight: 300;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    color: rgba(217, 187, 169, 0.92);
     margin-top: 16px;
-    max-width: 280px;
+    max-width: 295px;
 }
+
 .footer h4 {
-    font-size: 15px;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    font-size: 16px;
     font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: 0.015em;
     color: var(--fundo);
     margin-bottom: 16px;
 }
-.footer li {
-    font-size: 13px;
-    font-weight: 300;
-    margin-bottom: 9px;
+
+.footer ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-.footer li a:hover {
+
+.footer li {
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    color: rgba(217, 187, 169, 0.9);
+}
+
+.footer li a {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 3px;
+    font-family: var(--fonte-principal), "Poppins", sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: rgba(248, 241, 235, 0.88);
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.footer li a::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 1.5px dashed var(--terracota);
+    transition: width 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.footer li a:hover,
+.footer li a.ativo {
     color: var(--terracota);
 }
+
+.footer li a.ativo {
+    font-weight: 500;
+}
+
+.footer li a:hover::after,
+.footer li a.ativo::after {
+    width: 100%;
+}
+
+.footer li a:hover {
+    transform: translateX(2px);
+}
+
 .socials {
     display: flex;
-    gap: 10px;
-    margin-top: 16px;
+    gap: 11px;
+    margin-top: 18px;
 }
 
 .socials a {
-    width: 38px;
-    height: 38px;
+    width: 39px;
+    height: 39px;
     border-radius: 50%;
-    border: 1px solid var(--medio);
+    border: 1px solid rgba(217, 187, 169, 0.35);
     display: grid;
     place-items: center;
-    color: var(--bege); /* Cor inicial do ícone */
-    transition: all 0.25s ease;
+    color: var(--bege);
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
 }
 
-/* Tamanho e comportamento do ícone dentro do círculo */
 .socials a i {
     font-size: 18px;
 }
@@ -280,20 +367,48 @@ h2 {
     color: var(--fundo);
     transform: translateY(-2px);
 }
+
 .footer-copy {
-    border-top: 1px solid var(--medio);
-    padding: 18px 0;
+    border-top: 1px solid rgba(125, 71, 43, 0.65);
+    padding: 18px 20px;
     text-align: center;
-    font-size: 12px;
-    font-weight: 300;
+    font-family: var(--fonte-texto), "Nunito", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: rgba(217, 187, 169, 0.85);
 }
 
-/* ---------- Animação ao rolar ---------- */
+/* ---------- Redução de movimento ---------- */
 @media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
     .reveal {
         opacity: 1;
         transform: none;
         transition: none;
+    }
+
+    .nav-menu a,
+    .nav-menu a::after,
+    .footer li a,
+    .footer li a::after,
+    .socials a {
+        transition: none;
+    }
+
+    .nav-menu a:hover::after,
+    .nav-menu a.ativo::after,
+    .footer li a:hover::after,
+    .footer li a.ativo::after {
+        width: 100%;
+    }
+
+    .footer li a:hover,
+    .socials a:hover {
+        transform: none;
     }
 }
 
@@ -310,6 +425,7 @@ h2 {
         margin: 0 auto;
     }
 }
+
 @media (max-width: 760px) {
     .menu-toggle {
         display: block;
@@ -348,6 +464,7 @@ h2 {
         display: none;
     }
 }
+
 @media (max-width: 520px) {
     .footer-grid,
     .checks,
@@ -356,5 +473,64 @@ h2 {
     }
     .prod-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================
+   BOTÃO FLUTUANTE WHATSAPP
+   ========================================= */
+.whatsapp-flutuante {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    z-index: 999;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25d366;
+    box-shadow: 0 10px 24px rgba(62, 20, 2, 0.18);
+    transform: translate3d(0, 0, 0);
+    transition:
+        transform 0.36s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.whatsapp-flutuante:hover {
+    transform: translate3d(0, -3px, 0);
+    box-shadow: 0 14px 30px rgba(62, 20, 2, 0.24);
+}
+
+.whatsapp-flutuante-img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .whatsapp-flutuante {
+        right: 18px;
+        bottom: 18px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .whatsapp-flutuante-img {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .whatsapp-flutuante {
+        transition: none;
+    }
+
+    .whatsapp-flutuante:hover {
+        transform: none;
+        box-shadow: 0 10px 24px rgba(62, 20, 2, 0.18);
     }
 }

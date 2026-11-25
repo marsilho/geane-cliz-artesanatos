@@ -4,7 +4,7 @@
             <span class="eyebrow">Nossa História</span>
             <h1>Mais de 15 anos transformando fios, tecidos e afeto em memórias</h1>
             <p>Eu sou a Geane Cliz, e o ateliê nasceu da vontade de criar peças que abraçam quem as recebe. Cada bordado, tapete e naninha sai das minhas mãos pensando em quem vai usar, guardar e presentear.</p>
-            <div class="signature">Com carinho, Geane</div>
+            <div class="signature">Com carinho, Geane Cliz Artesanatos</div>
         </div>
 
         <div class="about-composition" data-aos="fade-left" data-aos-delay="150">

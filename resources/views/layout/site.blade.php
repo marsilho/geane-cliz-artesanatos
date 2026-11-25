@@ -24,6 +24,20 @@
 
     @include('partials.footer')
 
+    @if (request()->routeIs('site.home', 'site.sobre', 'site.produtos') || request()->is('/'))
+    <a
+        href="https://wa.me/5511973967073?text={{ urlencode('Olá! Vim pelo site e gostaria de saber mais sobre as peças.') }}"
+        class="whatsapp-flutuante"
+        target="_blank"
+        rel="noopener"
+        aria-label="Falar no WhatsApp com o Ateliê Geane Cliz">
+        <img
+            src="{{ asset('site/img/whatsappverde.svg') }}"
+            alt="WhatsApp Ateliê Geane Cliz"
+            class="whatsapp-flutuante-img">
+    </a>
+    @endif
+
     @include('partials.script')
     @stack('scripts')
 

@@ -10,11 +10,11 @@
         <button type="button" class="btn-menu" aria-label="Abrir menu">☰</button>
 
         <!-- Menu de Navegação -->
-        <nav class="nav-menu">
+        <nav class="nav-menu" aria-label="Navegação principal">
             <a href="{{ url('/') }}" class="{{ request()->routeIs('site.home') || request()->is('/') ? 'ativo' : '' }}">Home</a>
             <a href="{{ route('site.sobre') }}" class="{{ request()->routeIs('site.sobre') ? 'ativo' : '' }}">Sobre</a>
             <a href="{{ route('site.produtos') }}" class="{{ request()->routeIs('site.produtos') ? 'ativo' : '' }}">Produtos</a>
-            <a href="{{ url('/#contato') }}">Contato</a>
+            <a href="https://wa.me/5511973967073?text={{ urlencode('Olá! Vim pelo site e gostaria de saber mais sobre as peças.') }}" target="_blank" rel="noopener">Contato</a>
         </nav>
     </div>
 </header>
