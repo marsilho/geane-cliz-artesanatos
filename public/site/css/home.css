@@ -11,7 +11,8 @@
     margin-top: -102px;
     padding: 167px 0 190px;
     position: relative;
-    overflow: visible;
+    overflow-x: clip;
+    overflow-y: visible;
     z-index: 1;
 }
 
@@ -42,9 +43,21 @@
         transparent 1.5px
     );
     background-size: 18px 18px;
+    background-position: 0 0;
     opacity: 0.22;
     z-index: 0;
     pointer-events: none;
+    animation: deslizarPontosSuave 16s ease-in-out infinite;
+}
+
+@keyframes deslizarPontosSuave {
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 9px -9px;
+    }
 }
 
 @keyframes flutuarFundoBanner {
@@ -155,10 +168,11 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-height: 44px;
     padding: 10px 36px;
     font-family: var(--fonte-principal), "Poppins", sans-serif;
     font-size: 15px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.4;
     border-radius: 0;
     text-decoration: none;
@@ -220,20 +234,24 @@
     position: relative;
     flex: 0 0 520px;
     width: 520px;
+    max-width: 100%;
     height: 460px;
 }
 
 .banner-imagens::before {
     content: "";
     position: absolute;
-    top: -18px;
-    left: -2px;
-    width: 525px;
-    height: 445px;
-    border: 2px dashed rgba(139, 94, 60, 0.28);
+    inset: 0;
+    margin: auto;
+    width: 470px;
+    height: 420px;
+    max-width: 100%;
+    max-height: 100%;
+    border: 2px dashed rgba(139, 94, 60, 0.34);
     border-radius: 46% 36% 34% 42% / 36% 40% 42% 44%;
     z-index: 0;
     pointer-events: none;
+    transform-origin: center center;
     animation: girarCostura 25s linear infinite;
 }
 
@@ -345,25 +363,53 @@
     }
 
     .banner-imagens {
-        transform: scale(0.88);
-        transform-origin: center right;
-        margin-right: -30px;
+        flex: 0 0 460px;
+        width: 460px;
+        height: 410px;
+    }
+
+    .banner-imagens::before {
+        width: 415px;
+        height: 370px;
+    }
+
+    .bolha-principal {
+        width: 435px;
+        height: 365px;
+        left: 12px;
+    }
+
+    .bolha-antonieta,
+    .bolha-babadores,
+    .bolha-manta-roxa {
+        width: 145px;
+        height: 145px;
+    }
+
+    .bolha-babadores {
+        left: 155px;
+        bottom: -22px;
     }
 }
 
 @media (max-width: 900px) {
     .banner-hero {
-        padding: 162px 0 80px;
+        padding: 148px 0 110px;
+    }
+
+    .banner-onda svg {
+        height: 110px;
     }
 
     .banner-container {
         flex-direction: column;
         text-align: center;
-        gap: 20px;
+        gap: 28px;
     }
 
     .banner-conteudo {
-        max-width: 550px;
+        max-width: 540px;
+        width: 100%;
     }
 
     .descricao-banner {
@@ -377,30 +423,55 @@
 
     .banner-imagens {
         flex: none;
-        width: 520px;
-        margin: 15px auto 0;
-        transform: scale(0.9);
-        transform-origin: top center;
+        width: 420px;
+        max-width: 100%;
+        height: 380px;
+        margin: 0 auto;
+        transform: none;
+    }
+
+    .banner-imagens::before {
+        width: 370px;
+        height: 340px;
+    }
+
+    .bolha-principal {
+        width: 360px;
+        height: 300px;
+        top: 10px;
+        left: 30px;
+    }
+
+    .bolha-antonieta,
+    .bolha-babadores,
+    .bolha-manta-roxa {
+        width: 120px;
+        height: 120px;
+    }
+
+    .bolha-antonieta {
+        left: 12px;
+        bottom: 24px;
+    }
+
+    .bolha-babadores {
+        left: 148px;
+        bottom: -8px;
+    }
+
+    .bolha-manta-roxa {
+        right: 8px;
+        bottom: 20px;
     }
 }
 
 @media (max-width: 600px) {
     .banner-hero {
-        padding: 147px 0 65px;
+        padding: 142px 0 90px;
     }
 
-    .titulo-banner {
-        font-size: 34px;
-    }
-
-    .descricao-banner {
-        font-size: 14.5px;
-    }
-
-    .banner-imagens {
-        transform: scale(0.76);
-        margin-top: 0;
-        margin-bottom: -100px;
+    .banner-onda svg {
+        height: 105px;
     }
 
     .banner-hero::after {
@@ -408,20 +479,74 @@
     }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
+    .banner-hero {
+        padding: 138px 0 95px;
+    }
+
     .titulo-banner {
         font-size: 30px;
     }
 
-    .banner-imagens {
-        transform: scale(0.64);
-        margin-bottom: -145px;
+    .descricao-banner {
+        font-size: 14.5px;
+        margin-bottom: 22px;
+    }
+
+    .banner-botoes {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
     }
 
     .banner-botoes .btn,
     .banner-botoes .btn-principal,
     .banner-botoes .btn-secundario {
-        padding: 11px 22px;
+        width: 100%;
+        max-width: 290px;
+        padding: 10px 20px;
+    }
+
+    .banner-imagens {
+        width: 300px;
+        height: 275px;
+        margin: 0 auto;
+    }
+
+    .banner-imagens::before {
+        width: 268px;
+        height: 250px;
+    }
+
+    .bolha-principal {
+        width: 252px;
+        height: 210px;
+        top: 8px;
+        left: 24px;
+        box-shadow: 7px -6px 0 #4a2e1b;
+    }
+
+    .bolha-antonieta,
+    .bolha-babadores,
+    .bolha-manta-roxa {
+        width: 82px;
+        height: 82px;
+    }
+
+    .bolha-antonieta {
+        left: 8px;
+        bottom: 20px;
+    }
+
+    .bolha-babadores {
+        left: 104px;
+        bottom: -2px;
+    }
+
+    .bolha-manta-roxa {
+        right: 4px;
+        bottom: 22px;
     }
 }
 
@@ -431,10 +556,11 @@
 
 .sobre {
     position: relative;
-    padding: 50px 0;
+    padding: 56px 0;
     background-color: var(--fundo);
     z-index: 2;
-    overflow: visible;
+    overflow-x: clip;
+    overflow-y: visible;
 }
 
 .sobre::after {
@@ -594,14 +720,46 @@
         box-shadow 0.32s ease;
 }
 
+.sobre-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .sobre-photo:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 26px rgba(62, 20, 2, 0.1);
 }
 
+@media (max-width: 900px) {
+    .sobre-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+
+    .sobre p {
+        max-width: 100%;
+    }
+
+    .sobre-photos {
+        max-width: 520px;
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
 @media (max-width: 600px) {
+    .sobre {
+        padding: 44px 0;
+    }
+
     .checks {
         grid-template-columns: 1fr;
+    }
+
+    .sobre-photos {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
 
     .sobre::after {
@@ -625,9 +783,10 @@
 
 .produtos {
     position: relative;
-    padding: 40px 0 110px;
+    padding: 40px 0 96px;
     background-color: var(--fundo);
-    overflow: visible;
+    overflow-x: clip;
+    overflow-y: visible;
     z-index: 1;
 }
 
@@ -657,7 +816,7 @@
 
 .produtos-cabecalho {
     text-align: center;
-    padding-top: clamp(42px, 5.5vw, 72px);
+    padding-top: clamp(32px, 5vw, 64px);
     margin-bottom: 24px;
 }
 
@@ -729,7 +888,8 @@
     border-top: 1px solid rgba(110, 40, 20, 0.12);
 }
 
-.produto-item:hover .produto-info {
+.produto-item:hover .produto-info,
+.produto-item:focus-visible .produto-info {
     transform: translateY(0);
 }
 
@@ -764,25 +924,37 @@
 
 .produtos-cta {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 36px;
 }
 
 @media (max-width: 768px) {
+    .produtos {
+        padding: 32px 0 72px;
+    }
+
     .produtos-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 260px;
+        grid-auto-rows: 240px;
+        gap: 14px;
+        padding: 0 16px;
     }
 
-    .produto-item:nth-child(3),
-    .produto-item:nth-child(4) {
-        grid-column: span 2;
-    }
-
-    .produto-item:nth-child(1),
-    .produto-item:nth-child(2),
-    .produto-item:nth-child(5),
-    .produto-item:nth-child(6) {
+    .produto-item:nth-child(n) {
         grid-column: span 1;
+    }
+
+    .produto-info {
+        transform: translateY(0);
+        padding: 10px 12px;
+        background: rgba(250, 246, 241, 0.92);
+    }
+
+    .produto-nome {
+        font-size: 13px;
+    }
+
+    .produto-preco {
+        font-size: 12.5px;
     }
 
     .produtos::before {
@@ -794,16 +966,14 @@
 @media (max-width: 480px) {
     .produtos-grid {
         grid-template-columns: 1fr;
-        grid-auto-rows: 280px;
+        grid-auto-rows: 250px;
     }
 
-    .produto-item:nth-child(1),
-    .produto-item:nth-child(2),
-    .produto-item:nth-child(3),
-    .produto-item:nth-child(4),
-    .produto-item:nth-child(5),
-    .produto-item:nth-child(6) {
-        grid-column: span 1;
+    .produtos-cta .btn,
+    .produtos-cta .btn-principal,
+    .produtos-cta .btn-secundario {
+        width: 100%;
+        max-width: 300px;
     }
 }
 
@@ -813,9 +983,10 @@
 
 .experiencia {
     position: relative;
-    padding: 90px 0;
+    padding: 80px 0;
     background-color: var(--fundo);
-    overflow: visible;
+    overflow-x: clip;
+    overflow-y: visible;
     z-index: 1;
 }
 
@@ -849,6 +1020,8 @@
 .experiencia-fotos {
     position: relative;
     height: 380px;
+    width: 320px;
+    max-width: 100%;
 }
 
 .experiencia-foto {
@@ -971,15 +1144,31 @@
 }
 
 @media (max-width: 768px) {
+    .experiencia {
+        padding: 64px 0;
+    }
+
     .experiencia-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 32px;
     }
 
     .experiencia-fotos {
-        height: 320px;
-        max-width: 320px;
+        height: 310px;
+        width: 300px;
         margin: 0 auto;
+    }
+
+    .experiencia-foto.a {
+        width: 205px;
+        height: 260px;
+    }
+
+    .experiencia-foto.b {
+        left: 115px;
+        top: 155px;
+        width: 165px;
+        height: 155px;
     }
 
     .experiencia .diferenciais {
@@ -998,12 +1187,27 @@
     }
 }
 
+@media (max-width: 480px) {
+    .experiencia-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .experiencia-acoes .btn,
+    .experiencia-acoes .btn-principal,
+    .experiencia-acoes .btn-secundario {
+        width: 100%;
+        padding: 11px 22px;
+    }
+}
+
 /* =========================================
 5. ACESSIBILIDADE / REDUÇÃO DE MOVIMENTO
    ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
     .banner-hero::before,
+    .banner-hero::after,
     .banner-imagens::before,
     .bolha-principal,
     .sobre::after,

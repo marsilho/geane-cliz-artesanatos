@@ -63,17 +63,33 @@
     }
 }
 
+/* Quadrado pontilhado padronizado com o banner da Home (.banner-hero::after) + efeito suave */
 .dots-decoration {
     position: absolute;
+    top: 65px;
     right: 4%;
-    top: 150px;
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
+    background-image: radial-gradient(
+        var(--terracota) 1.5px,
+        transparent 1.5px
+    );
+    background-size: 18px 18px;
+    background-position: 0 0;
+    opacity: 0.22;
     z-index: 0;
     pointer-events: none;
-    background-image: radial-gradient(var(--terracota) 2px, transparent 2px);
-    background-size: 20px 20px;
-    opacity: 0.35;
+    animation: deslizarPontosSuave 16s ease-in-out infinite;
+}
+
+@keyframes deslizarPontosSuave {
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 9px -9px;
+    }
 }
 
 .about-hero,
@@ -229,7 +245,6 @@
     display: block;
     width: 100%;
     height: 230px;
-    /* opacity: 0.22; */
 }
 
 /* ---------- 2. Essência (Integrada diretamente ao fluxo da página) ---------- */
@@ -477,7 +492,7 @@
     transform: scale(1.05);
 }
 
-/* Caixa final com botões no mesmo estilo e animação da Home */
+/* Caixa final com botões padronizados no mesmo estilo da Experiência */
 .about-cta {
     margin-top: 70px;
     text-align: center;
@@ -507,31 +522,41 @@
 
 .about-cta-buttons {
     display: flex;
-    gap: 16px;
+    gap: 14px;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
 
+.about-cta-buttons .btn,
 .about-cta-buttons .btn-principal,
 .about-cta-buttons .btn-secundario {
-    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 34px;
+    padding: 10px 36px;
     font-family: var(--fonte-principal), "Poppins", sans-serif;
-    font-size: 14.5px;
-    font-weight: 500;
-    line-height: 1.25;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.4;
+    border-radius: 0;
     text-decoration: none;
-    overflow: hidden;
-    z-index: 1;
     white-space: nowrap;
     transition:
-        color 0.4s ease,
-        border-color 0.4s ease,
-        padding 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.about-cta-buttons .btn::before,
+.about-cta-buttons .btn::after,
+.about-cta-buttons .btn-principal::before,
+.about-cta-buttons .btn-principal::after,
+.about-cta-buttons .btn-secundario::before,
+.about-cta-buttons .btn-secundario::after {
+    content: none;
+    display: none;
 }
 
 .about-cta-buttons .btn-principal {
@@ -540,57 +565,24 @@
     border: 1px solid var(--medio);
 }
 
+.about-cta-buttons .btn-principal:hover {
+    background-color: var(--cafe);
+    border-color: var(--cafe);
+    color: var(--fundo);
+    box-shadow: 0 14px 30px rgba(62, 20, 2, 0.18);
+}
+
 .about-cta-buttons .btn-secundario {
     color: var(--cafe);
     background-color: transparent;
     border: 1px solid var(--cafe);
 }
 
-.about-cta-buttons .btn-principal::before,
-.about-cta-buttons .btn-secundario::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 100%;
-    background-color: var(--cafe);
-    z-index: -1;
-    transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.about-cta-buttons .btn-principal::after,
-.about-cta-buttons .btn-secundario::after {
-    content: "→";
-    width: 0;
-    opacity: 0;
-    margin-left: 0;
-    transform: translateX(-10px);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.about-cta-buttons .btn-principal:hover::before,
-.about-cta-buttons .btn-secundario:hover::before {
-    width: 100%;
-}
-
-.about-cta-buttons .btn-principal:hover {
-    border-color: var(--medio);
-    padding-right: 28px;
-}
-
 .about-cta-buttons .btn-secundario:hover {
+    background-color: var(--cafe);
     border-color: var(--cafe);
     color: var(--fundo);
-    padding-right: 28px;
-}
-
-.about-cta-buttons .btn-principal:hover::after,
-.about-cta-buttons .btn-secundario:hover::after {
-    width: 18px;
-    opacity: 1;
-    margin-left: 8px;
-    transform: translateX(0);
+    box-shadow: 0 14px 30px rgba(62, 20, 2, 0.18);
 }
 
 /* ---------- Responsivo ---------- */
@@ -615,6 +607,12 @@
 
     .mosaic-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .dots-decoration {
+        display: none;
     }
 }
 
@@ -643,10 +641,12 @@
         width: 100%;
     }
 
+    .about-cta-buttons .btn,
     .about-cta-buttons .btn-principal,
     .about-cta-buttons .btn-secundario {
         width: 100%;
         max-width: 300px;
+        padding: 11px 22px;
         white-space: normal;
         text-align: center;
     }
@@ -654,6 +654,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .bubble,
+    .dots-decoration,
     .stitch-ring {
         animation: none;
     }
@@ -663,12 +664,9 @@
     .step-number,
     .mosaic-item img,
     .bubble-photo,
+    .about-cta-buttons .btn,
     .about-cta-buttons .btn-principal,
-    .about-cta-buttons .btn-secundario,
-    .about-cta-buttons .btn-principal::before,
-    .about-cta-buttons .btn-secundario::before,
-    .about-cta-buttons .btn-principal::after,
-    .about-cta-buttons .btn-secundario::after {
+    .about-cta-buttons .btn-secundario {
         transition: none;
     }
 
@@ -676,15 +674,11 @@
     .essence-item:hover .essence-marker,
     .step-item:hover .step-number,
     .mosaic-item:hover img,
-    .bubble-photo:hover {
+    .bubble-photo:hover,
+    .about-cta-buttons .btn:hover,
+    .about-cta-buttons .btn-principal:hover,
+    .about-cta-buttons .btn-secundario:hover {
         transform: none;
-    }
-
-    .about-cta-buttons .btn-principal:hover::after,
-    .about-cta-buttons .btn-secundario:hover::after {
-        transform: none;
-        width: auto;
-        opacity: 1;
-        margin-left: 8px;
+        box-shadow: none;
     }
 }

@@ -148,7 +148,7 @@ h2 {
     display: flex;
     gap: 40px;
     font-family: var(--fonte-principal), "Poppins", sans-serif;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .nav-menu a {
@@ -224,9 +224,10 @@ h2 {
    FOOTER
    ========================================= */
 .footer-wave {
+    position: relative;
+    z-index: 2;
     display: block;
     line-height: 0;
-    background: var(--fundo);
     margin-top: -1px;
 }
 
@@ -247,6 +248,8 @@ h2 {
 }
 
 .footer {
+    position: relative;
+    z-index: 2;
     background: var(--cafe);
     color: var(--bege);
 }

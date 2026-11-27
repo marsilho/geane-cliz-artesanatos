@@ -2,14 +2,29 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('site/css/produtos.css') }}">
+<style>
+    /* Garante que o rodapé fique acima das bolhas de fundo */
+    footer,
+    .site-footer {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Bolha p5 posicionada para passar por trás do rodapé */
+    .products-page .bubble.p5 {
+        opacity: 0.14;
+    }
+</style>
 @endpush
 
 @section('content')
 <main class="page-wrapper products-page">
-    {{-- Bolhas contínuas e textura de fundo --}}
+    <!-- Bolhas contínuas e textura de fundo -->
     <span class="bubble p1"></span>
     <span class="bubble p2"></span>
     <span class="bubble p3"></span>
+    <span class="bubble p4"></span>
+    <span class="bubble p5"></span>
     <span class="dots-decoration"></span>
 
     @include('site.produtos.cabecalho')
@@ -50,7 +65,8 @@
 
             cards.forEach(c => {
                 const okCat = filtroAtual === 'todos' || c.dataset.categoria === filtroAtual;
-                const okBusca = !termo || normaliza(c.dataset.nome || '').includes(termo);
+                const textoCard = [c.dataset.nome || '', c.textContent || ''].join(' ');
+                const okBusca = !termo || normaliza(textoCard).includes(termo);
                 const mostrar = okCat && okBusca;
 
                 c.classList.toggle('oculto', !mostrar);
